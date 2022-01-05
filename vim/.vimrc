@@ -22,3 +22,8 @@ colorscheme solarized
 vnoremap <C-y> "+y
 vnoremap <C-x> "+x
 map <C-p> "+P
+
+call plug#begin()
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+call plug#end()
