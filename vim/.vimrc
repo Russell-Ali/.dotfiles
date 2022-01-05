@@ -3,6 +3,15 @@ set ls=2
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set noerrorbells
+set hidden
+set noswapfile
+set nobackup
+set undodir=$HOME/.vim/undo
+set undofile
+set nowrap
+set incsearch
+set scrolloff=8
 set smartindent
 set ignorecase
 set smartcase
