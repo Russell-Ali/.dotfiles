@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/home/rasul/.dotfiles/.git'
 let g:netrw_dirhist_2='/home/rasul'
 let g:netrw_dirhist_1='/home/rasul/Coding-Archives'
 let g:netrw_dirhist_0='/home/rasul/Coding-Archives/ATOM_V2✔/app'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_7='/home/rasul/.config/yay'
 let g:netrw_dirhist_6='/home/rasul/.config'
 let g:netrw_dirhist_5='/home/rasul/.config/qt5ct'
 let g:netrw_dirhist_4='/home/rasul/.config/pulseaudio-ctl'
-let g:netrw_dirhist_3='/home/rasul/.config'
