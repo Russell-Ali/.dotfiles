@@ -47,8 +47,8 @@ super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
-super + ctrl + {x,y,z}
-	bspc node -g {locked,sticky,private}
+super + ctrl + {m,x,y}
+	bspc node -g {marked,locked,sticky}
 
 #
 # focus/swap
@@ -165,5 +165,5 @@ super + v
 	clipmenu -c -bw 2 -l 16 -h 28 -fn Dejavu-12
 
 # toggle hidden status of focuesd window
-super + ctrl + m
+super + ctrl + i
 	/home/rasul/sources/scripts/hide-window.sh
