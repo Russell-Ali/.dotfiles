@@ -13,18 +13,25 @@ set nowrap
 set incsearch
 set scrolloff=8
 set smartindent
+set noshowmode
 set ignorecase
 set smartcase
 set filetype=on
 syntax on
 set background=dark
 colorscheme solarized
+let mapleader = " "
+let $FZF_DEFAULT_COMMAND='find .'
 vnoremap <C-y> "+y
 vnoremap <C-x> "+x
-map <C-p> "+P
-nnoremap <C-@> :FZF<cr>
+nnoremap <C-p> "+P
+vnoremap <C-p> "+P
+nnoremap <C-@> :Files %:p:h<cr>
 
 call plug#begin()
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 call plug#end()
