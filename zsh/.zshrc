@@ -40,9 +40,9 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi
 # custom aliases
 alias sudo='sudo '
 alias doas='sudo '
-alias la="ls -lA --color"
+alias la="ls -lhA --color"
 alias ls="ls --color"
-alias ll="ls -l --color"
+alias ll="ls -lh --color"
 alias untar='tar xvf'
 alias grep='grep --color'
 alias rd='rm -rf'

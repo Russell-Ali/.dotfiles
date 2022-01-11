@@ -14,6 +14,8 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 polkit-dumb-agent &
 # set the cursor
 xsetroot -cursor_name left_ptr & 
+# set key repeat and delay
+xset r rate 330 40 &
 # lock screen after 5 mins and suspend 10 mins after that
 /home/rasul/sources/scripts/locknsleep.sh &
 # notfication deamon
