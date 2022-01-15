@@ -59,9 +59,15 @@ call plug#end()
 
 lua << EOF
 local lsp_installer = require("nvim-lsp-installer")
+
+local function on_attach(client, bufnr)
+end
+
 lsp_installer.on_server_ready(function(server)
-    local opts = {}
-    server:setup(opts)
+  local opts = {
+    on_attach = on_attach,
+  }
+  server:setup(opts)
 end)
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }

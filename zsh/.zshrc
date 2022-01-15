@@ -56,6 +56,11 @@ alias cp='cp -r'
 alias btc='bluetoothctl power on; bluetoothctl connect'
 alias btd='bluetoothctl disconnect'
 
+unzipf() {
+    folder=$(echo "$1" | cut -f 1 -d '.')
+    unzip $1 -d $folder
+}
+
 # screenfetch
 export DESKTOP_SESSION='bspwm'
 /home/rasul/sources/fetch-master/fm6000 -l 9 -c random -f /home/rasul/sources/fetch-master/empty.txt 

@@ -20,10 +20,10 @@ xset r rate 330 40 &
 /home/rasul/sources/scripts/locknsleep.sh &
 # notfication deamon
 killall -q  dunst;  dunst &
-# set keyboard layout changer key combination
-setxkbmap -layout 'us,az' -option 'grp:alt_space_toggle' &
 # start clipboard manager
 clipmenud &
+# capslock = esc and  shift + capslock = capslock
+xmodmap -e 'clear lock' -e 'keycode 66 = Escape Caps_Lock NoSymbol NoSymbol' &
 
 ###########
 # Configs #
