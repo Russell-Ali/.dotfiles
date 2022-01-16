@@ -4,8 +4,6 @@
 # Auto Start #
 ##############
 
-# start sxhkd
-pgrep -x sxhkd > /dev/null || sxhkd &
 # restore wallpaper
 /home/rasul/.fehbg &
 # start compositor
