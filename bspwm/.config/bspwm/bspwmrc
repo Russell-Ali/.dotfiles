@@ -8,6 +8,8 @@
 pgrep -x sxhkd > /dev/null || sxhkd &
 # restore wallpaper
 /home/rasul/.fehbg &
+# start compositor
+picom --experimental-backends -b &
 # polybar starter
 .config/polybar/launch.sh & 
 # start polkit

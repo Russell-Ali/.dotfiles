@@ -39,6 +39,7 @@ nnoremap <Leader><S-Tab> <cmd>bprevious<cr>
 nnoremap <Leader>c <cmd>bd<cr>
 nnoremap <Leader><S-w> <cmd>bd!<cr>
 nnoremap <C-Space> <cmd>Telescope find_files<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>gg <cmd>Telescope live_grep<cr>
 nnoremap <leader>gD <cmd>lua vim.lsp.buf.declaration()<cr>
 nnoremap <leader>gd <cmd>lua vim.lsp.buf.definition()<cr>
