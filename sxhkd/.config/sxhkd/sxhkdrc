@@ -167,3 +167,7 @@ super + v
 # toggle hidden status of focuesd window
 super + ctrl + i
 	/home/rasul/sources/scripts/hide-window.sh
+
+# full and regional screenshot with maim
+super + {shift , alt} + s
+    maim -u ~/Pictures/$(date +%s).png {_,-sm 10}

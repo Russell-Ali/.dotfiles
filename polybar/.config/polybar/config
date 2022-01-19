@@ -27,7 +27,7 @@ font-2 = Material Design Icons Desktop:style=Regular:pixelsize=10:antialias=true
 
 modules-left = bspwm title
 modules-center = 
-modules-right = cpu temperature memory fs-root fs-timeshift fs-home backlight battery network bluetooth date pulseaudio xkeyboard pres
+modules-right = cpu temperature memory fs-root fs-timeshift fs-home backlight battery wlan bluetooth date pulseaudio xkeyboard pres
 tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
@@ -63,7 +63,7 @@ interval = 60
 date = [%H:%M]
 date-alt = [%b %d  %a]
 
-[module/network]
+[module/wlan]
 
 type = internal/network
 interface = wlp1s0
