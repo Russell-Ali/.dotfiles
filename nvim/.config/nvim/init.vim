@@ -22,8 +22,8 @@ set smartcase
 set filetype=on
 set background=dark
 
-syntax on
 colorscheme NeoSolarized
+syntax enable
 
 let mapleader = " "
 let g:airline#extensions#bufferline#enabled = 1
@@ -35,10 +35,10 @@ vnoremap <C-y> "+y
 vnoremap <C-x> "+x
 nnoremap <C-p> "+P
 vnoremap <C-p> "+P
-nnoremap <Leader><Tab> <cmd>bnext<cr>
-nnoremap <Leader><S-Tab> <cmd>bprevious<cr>
-nnoremap <Leader>c <cmd>bd<cr>
-nnoremap <Leader><S-w> <cmd>bd!<cr>
+nnoremap <leader><Tab> <cmd>bnext<cr>
+nnoremap <leader><S-Tab> <cmd>bprevious<cr>
+nnoremap <leader>c <cmd>bd<cr>
+nnoremap <leader><S-c> <cmd>bd!<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>gg <cmd>Telescope live_grep<cr>
@@ -48,6 +48,10 @@ nnoremap <leader>K <cmd>lua vim.lsp.buf.hover()<cr>
 nnoremap <leader>gi <cmd>lua vim.lsp.buf.implementation()<cr>
 nnoremap <leader>D <cmd>lua vim.lsp.buf.type_definition()<cr>
 nnoremap <leader>gr <cmd>lua vim.lsp.buf.references()<cr>
+nnoremap <C-t> <cmd>NERDTreeToggle<CR>
+nnoremap <leader>nF :NERDTreeFocus<CR>
+nnoremap <leader>nf <cmd>NERDTreeFind<CR>
+nnoremap <leader>nc <cmd>NERDTreeClose<CR>
 
 call plug#begin()
 Plug 'bling/vim-bufferline'
@@ -57,6 +61,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'preservim/nerdtree'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 call plug#end()
@@ -79,4 +85,15 @@ for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+
+require'nvim-treesitter.configs'.setup {
+    highlight = {
+        enable = true,
+        disable = {},
+    },
+    indent = {
+        enable = false,
+        disable = {},
+    },
+}
 EOF
