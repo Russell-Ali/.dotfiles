@@ -26,10 +26,14 @@ colorscheme NeoSolarized
 syntax enable
 
 let mapleader = " "
+let g:coq_settings = {'auto_start': 'shut-up'}
 let g:airline#extensions#bufferline#enabled = 1
 let g:airline_section_z = '%-c | %-p%%'
-let g:airline_section_y = ''
-let g:coq_settings = {'auto_start': 'shut-up'}
+let g:airline#extensions#default#layout = [
+            \ [ 'a', 'b', 'c' ],
+            \ [ 'x', 'z', 'error', 'warning' ]
+            \ ]
+
 
 vnoremap <C-y> "+y
 vnoremap <C-x> "+x
@@ -48,10 +52,10 @@ nnoremap <leader>K <cmd>lua vim.lsp.buf.hover()<cr>
 nnoremap <leader>gi <cmd>lua vim.lsp.buf.implementation()<cr>
 nnoremap <leader>D <cmd>lua vim.lsp.buf.type_definition()<cr>
 nnoremap <leader>gr <cmd>lua vim.lsp.buf.references()<cr>
-nnoremap <C-t> <cmd>NERDTreeToggle<CR>
-nnoremap <leader>nF :NERDTreeFocus<CR>
-nnoremap <leader>nf <cmd>NERDTreeFind<CR>
-nnoremap <leader>nc <cmd>NERDTreeClose<CR>
+nnoremap <C-t> <cmd>NERDTreeToggle<cr>
+nnoremap <leader>nf <cmd>NERDTreeFind<cr>
+nnoremap <leader>nn <cmd>NERDTree<cr>
+nnoremap <leader>nc <cmd>NERDTreeClose<cr>
 
 call plug#begin()
 Plug 'bling/vim-bufferline'
@@ -90,6 +94,9 @@ require'nvim-treesitter.configs'.setup {
     highlight = {
         enable = true,
         disable = {},
+        additional_vim_regex_highlighting = {
+            'vim'
+        }
     },
     indent = {
         enable = false,
