@@ -27,7 +27,7 @@ font-2 = Material Design Icons Desktop:style=Regular:pixelsize=10:antialias=true
 
 modules-left = bspwm title
 modules-center = 
-modules-right = cpu temperature memory fs-root fs-timeshift fs-home backlight battery wlan bluetooth date pulseaudio xkeyboard pres
+modules-right = cpu temperature memory fs-root fs-timeshift fs-home backlight battery wlan bluetooth date pulseaudio xkeyboard caffeine
 tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
@@ -197,11 +197,11 @@ exec = /home/rasul/.config/polybar/modules/bluetooth-module.sh
 interval = 1
 click-left = /home/rasul/.config/polybar/modules/bluetooth-toggle.sh
 
-[module/pres]
+[module/caffeine]
 type = custom/script
-exec = /home/rasul/.config/polybar/modules/pres-module.sh
+exec = /home/rasul/.config/polybar/modules/caffeine-module.sh
 interval = 1
-click-left = /home/rasul/.config/polybar/modules/pres-toggle.sh
+click-left = /home/rasul/.config/polybar/modules/caffeine-toggle.sh
 label = [%output%]
 
 [module/packages]
