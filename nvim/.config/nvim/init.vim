@@ -1,5 +1,6 @@
 set number relativenumber
 set guicursor=
+set mouse=a
 set ls=2
 set tabstop=4
 set shiftwidth=4
@@ -31,9 +32,7 @@ let g:airline#extensions#bufferline#enabled = 1
 let g:airline_section_z = '%-c | %-p%%'
 let g:airline#extensions#default#layout = [
             \ [ 'a', 'b', 'c' ],
-            \ [ 'x', 'z', 'error', 'warning' ]
-            \ ]
-
+            \ [ 'x', 'z', 'error', 'warning' ]]
 
 vnoremap <C-y> "+y
 vnoremap <C-x> "+x
@@ -55,7 +54,6 @@ nnoremap <leader>gr <cmd>lua vim.lsp.buf.references()<cr>
 nnoremap <C-t> <cmd>NERDTreeToggle<cr>
 nnoremap <leader>nf <cmd>NERDTreeFind<cr>
 nnoremap <leader>nn <cmd>NERDTree<cr>
-nnoremap <leader>nc <cmd>NERDTreeClose<cr>
 
 call plug#begin()
 Plug 'bling/vim-bufferline'
