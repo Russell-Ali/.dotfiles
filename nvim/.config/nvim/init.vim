@@ -70,12 +70,29 @@ Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'goolord/alpha-nvim'
+Plug 'numToStr/Comment.nvim'
 call plug#end()
 
 lua << EOF
 local lsp_installer = require("nvim-lsp-installer")
 
 require('telescope').load_extension('fzf')
+
+require('Comment').setup({
+toggler = {
+    line = "''",
+    block = ";;",
+    },
+opleader = {
+    line = "'",
+    block = ";",
+    },
+extra = {
+    above = "'O",
+    below = "'o",
+    eol = "'a",
+    },
+})
 
 local function on_attach(client, bufnr)
 end
@@ -104,19 +121,14 @@ local dashboard = require("alpha.themes.dashboard")
 local date = os.date("%A, %d %B %Y")
 
 dashboard.section.header.val = {
- "                                                                   ",
- "                                                                   ",
- " ███▄▄▄▄      ▄████████  ▄██████▄   ▄█    █▄   ▄█    ▄▄▄▄███▄▄▄▄   ",
- " ███▀▀▀██▄   ███    ███ ███    ███ ███    ███ ███  ▄██▀▀▀███▀▀▀██▄ ",
- " ███   ███   ███    █▀  ███    ███ ███    ███ ███▌ ███   ███   ███ ",
- " ███   ███  ▄███▄▄▄     ███    ███ ███    ███ ███▌ ███   ███   ███ ",
- " ███   ███ ▀▀███▀▀▀     ███    ███ ███    ███ ███▌ ███   ███   ███ ",
- " ███   ███   ███    █▄  ███    ███ ███    ███ ███  ███   ███   ███ ",
- " ███   ███   ███    ███ ███    ███ ███    ███ ███  ███   ███   ███ ",
- "  ▀█   █▀    ██████████  ▀██████▀   ▀██████▀  █▀    ▀█   ███   █▀  ",
- "                                                                   ",
- "                                                                   ",
-string.format("                       %s                       ", date),
+ "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
+ "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
+ "  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
+ "  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
+ "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
+ "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
+ "                                                     ",
+string.format("                %s                ", date),
 }
 
 dashboard.section.buttons.val = {
@@ -138,8 +150,9 @@ handle_version:close()
 dashboard.section.footer.val = {
  "                               ",
  string.format("Currently, %d plugins installed", plugs),
+ "                               ",
  string.format("             %s             ",version ),
- "","","","","","","","",
+ "","","","","","","","","","","","","","","","",
 }
 alpha.setup(dashboard.opts)
 
