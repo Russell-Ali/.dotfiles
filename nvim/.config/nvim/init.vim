@@ -101,38 +101,45 @@ require'nvim-web-devicons'.get_icons()
 
 local alpha = require("alpha")
 local dashboard = require("alpha.themes.dashboard")
-local date = os.date("%A, %m %B %Y")
+local date = os.date("%A, %d %B %Y")
 
 dashboard.section.header.val = {
- "                                                                                                                      ",
- "                                                                                                                      ",
- "                                                                                                                      ",
- "  █████╗ ████████╗    ██╗   ██╗ ██████╗ ██╗   ██╗██████╗         ███████╗███████╗██████╗ ██╗   ██╗██╗ ██████╗███████╗ ",
- " ██╔══██╗╚══██╔══╝    ╚██╗ ██╔╝██╔═══██╗██║   ██║██╔══██╗        ██╔════╝██╔════╝██╔══██╗██║   ██║██║██╔════╝██╔════╝ ",
- " ███████║   ██║        ╚████╔╝ ██║   ██║██║   ██║██████╔╝        ███████╗█████╗  ██████╔╝██║   ██║██║██║     █████╗   ",
- " ██╔══██║   ██║         ╚██╔╝  ██║   ██║██║   ██║██╔══██╗        ╚════██║██╔══╝  ██╔══██╗╚██╗ ██╔╝██║██║     ██╔══╝   ",
- " ██║  ██║   ██║          ██║   ╚██████╔╝╚██████╔╝██║  ██║        ███████║███████╗██║  ██║ ╚████╔╝ ██║╚██████╗███████╗ ",
- " ╚═╝  ╚═╝   ╚═╝          ╚═╝    ╚═════╝  ╚═════╝ ╚═╝  ╚═╝        ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚═╝ ╚═════╝╚══════╝ ",
- "                                                                                                                      ",
- "                                                                                                                      ",
-string.format("                                                %s                                                ", date)
+ "                                                                   ",
+ "                                                                   ",
+ " ███▄▄▄▄      ▄████████  ▄██████▄   ▄█    █▄   ▄█    ▄▄▄▄███▄▄▄▄   ",
+ " ███▀▀▀██▄   ███    ███ ███    ███ ███    ███ ███  ▄██▀▀▀███▀▀▀██▄ ",
+ " ███   ███   ███    █▀  ███    ███ ███    ███ ███▌ ███   ███   ███ ",
+ " ███   ███  ▄███▄▄▄     ███    ███ ███    ███ ███▌ ███   ███   ███ ",
+ " ███   ███ ▀▀███▀▀▀     ███    ███ ███    ███ ███▌ ███   ███   ███ ",
+ " ███   ███   ███    █▄  ███    ███ ███    ███ ███  ███   ███   ███ ",
+ " ███   ███   ███    ███ ███    ███ ███    ███ ███  ███   ███   ███ ",
+ "  ▀█   █▀    ██████████  ▀██████▀   ▀██████▀  █▀    ▀█   ███   █▀  ",
+ "                                                                   ",
+ "                                                                   ",
+string.format("                       %s                       ", date),
 }
 
 dashboard.section.buttons.val = {
-    dashboard.button( "e", "󰈤  󰁕  󰧟 New file" , "<cmd>ene <BAR> startinsert <cr>"),
-    dashboard.button( "f", "󰮗  󰁕  󰧟 Find files", "<cmd>cd $HOME/Projects/ | Telescope find_files<cr>"),
-    dashboard.button( "r", "󱀸  󰁕  󰧟 Recent files"   , "<cmd>Telescope oldfiles<cr>"),
-    dashboard.button( "s", "󰘮  󰁕  󰧟 Settings" , "<cmd>tabnew $MYVIMRC <cr>"),
-    dashboard.button( "q", "󰈆  󰁕  󰧟 Quit NVIM", "<cmd>qa<CR>"),
+    dashboard.button( "e", "󰈤 󰨃 New file" , "<cmd>ene <BAR> startinsert <cr>"),
+    dashboard.button( "f", "󰮗 󰨃 Find files", "<cmd>cd $HOME/Projects/ | Telescope find_files<cr>"),
+    dashboard.button( "r", "󱀸 󰨃 Recent files"   , "<cmd>Telescope oldfiles<cr>"),
+    dashboard.button( "s", "󰘮 󰨃 Settings" , "<cmd>tabnew $MYVIMRC <cr>"),
+    dashboard.button( "q", "󰈆 󰨃 Quit NVIM", "<cmd>qa<CR>"),
 }
 
 local handle_plug = io.popen('ls $HOME/.local/share/nvim/plugged/ | wc -l')
 local plugs = handle_plug:read("*a")
 handle_plug:close()
 
+local handle_version= io.popen("nvim -v | grep 'NVIM' | awk '{print $2}' | tr -d ' \t\n\r' ")
+local version = handle_version:read("*a")
+handle_version:close()
+
 dashboard.section.footer.val = {
- "                                ",
- string.format("Currently, %d plugins installed", plugs), "","","","","","","","","","","","",""
+ "                               ",
+ string.format("Currently, %d plugins installed", plugs),
+ string.format("             %s             ",version ),
+ "","","","","","","","",
 }
 alpha.setup(dashboard.opts)
 
