@@ -27,7 +27,19 @@ colorscheme NeoSolarized
 syntax enable
 
 let mapleader = " "
-let g:coq_settings = {'auto_start': 'shut-up'}
+let g:coq_settings = {'auto_start': 'shut-up' , 'display.icons.mode' : 'short' ,
+    \ 'display.pum.kind_context' : [" ", ""], 'display.pum.source_context' : [" ", ""],
+    \ 'display.icons.mappings' : {
+    \ "Boolean": "", "Character": "", "Class": "", "Color": "",
+    \ "Constant": "", "Constructor": "", "Enum": "", "EnumMember": "",
+    \ "Event": "", "Field": "", "File": "", "Folder": "",
+    \ "Function": "", "Interface": "ﰮ", "Keyword": "", "Method": "",
+    \ "Module": "", "Number": "", "Operator": "Ψ", "Parameter": "",
+    \ "Property": "", "Reference": "", "Snippet": "", "String": "",
+    \ "Struct": "", "Text": "", "TypeParameter": "", "Unit": "",
+    \ "Value": "", "Variable": "" },
+    \ "clients.snippets.short_name" : "SNP"}
+
 let g:airline#extensions#bufferline#enabled = 1
 let g:airline_section_z = '%-c | %-p%%'
 let g:airline#extensions#default#layout = [
@@ -50,6 +62,7 @@ nnoremap <leader>gd <cmd>lua vim.lsp.buf.definition()<cr>
 nnoremap <leader>K <cmd>lua vim.lsp.buf.hover()<cr>
 nnoremap <leader>gi <cmd>lua vim.lsp.buf.implementation()<cr>
 nnoremap <leader>D <cmd>lua vim.lsp.buf.type_definition()<cr>
+nnoremap <leader>F <cmd>lua vim.lsp.buf.formatting()<cr>
 nnoremap <leader>gr <cmd>lua vim.lsp.buf.references()<cr>
 nnoremap <C-t> <cmd>NERDTreeToggle<cr>
 nnoremap <leader>nf <cmd>NERDTreeFind<cr>
@@ -75,6 +88,7 @@ call plug#end()
 
 lua << EOF
 local lsp_installer = require("nvim-lsp-installer")
+local lspconfig = require("lspconfig")
 
 require('telescope').load_extension('fzf')
 
@@ -95,7 +109,14 @@ extra = {
 })
 
 local function on_attach(client, bufnr)
+    if client.resolved_capabilities.document_formatting then
+      vim.api.nvim_command [[augroup Format]]
+      vim.api.nvim_command [[autocmd! * <buffer>]]
+      vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
+      vim.api.nvim_command [[augroup END]]
+    end
 end
+
 
 lsp_installer.on_server_ready(function(server)
   local opts = {
