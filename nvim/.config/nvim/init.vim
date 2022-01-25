@@ -46,16 +46,29 @@ let g:airline#extensions#default#layout = [
             \ [ 'a', 'b', 'c' ],
             \ [ 'x', 'z', 'error', 'warning' ]]
 
+let g:floaterm_wintype = 'vsplit'
+let g:floaterm_width = 0.2
+let g:floaterm_keymap_new = '<A-\>'
+let g:floaterm_keymap_prev = '<A-[>'
+let g:floaterm_keymap_next = '<A-]>'
+let g:floaterm_keymap_first = '<A-{>'
+let g:floaterm_keymap_last = '<A-}>'
+let g:floaterm_keymap_toggle = '<C-t>'
+tnoremap <Esc> <C-\><C-n>
+autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no
+
 vnoremap <C-y> "+y
 vnoremap <C-x> "+x
 nnoremap <C-p> "+P
 vnoremap <C-p> "+P
+noremap <F7> <cmd>set spell!<cr>
 nnoremap <leader><Tab> <cmd>bnext<cr>
 nnoremap <leader><S-Tab> <cmd>bprevious<cr>
 nnoremap <leader>c <cmd>bd<cr>
 nnoremap <leader><S-c> <cmd>bd!<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope oldfiles<cr>
 nnoremap <leader>gg <cmd>Telescope live_grep<cr>
 nnoremap <leader>gD <cmd>lua vim.lsp.buf.declaration()<cr>
 nnoremap <leader>gd <cmd>lua vim.lsp.buf.definition()<cr>
@@ -64,7 +77,7 @@ nnoremap <leader>gi <cmd>lua vim.lsp.buf.implementation()<cr>
 nnoremap <leader>D <cmd>lua vim.lsp.buf.type_definition()<cr>
 nnoremap <leader>F <cmd>lua vim.lsp.buf.formatting()<cr>
 nnoremap <leader>gr <cmd>lua vim.lsp.buf.references()<cr>
-nnoremap <C-t> <cmd>NERDTreeToggle<cr>
+nnoremap <C-n> <cmd>NERDTreeToggle<cr>
 nnoremap <leader>nf <cmd>NERDTreeFind<cr>
 nnoremap <leader>nn <cmd>NERDTree<cr>
 
@@ -84,6 +97,8 @@ Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'goolord/alpha-nvim'
 Plug 'numToStr/Comment.nvim'
+Plug 'voldikss/vim-floaterm'
+Plug 'ThePrimeagen/vim-be-good'
 call plug#end()
 
 lua << EOF
@@ -117,7 +132,6 @@ local function on_attach(client, bufnr)
     end
 end
 
-
 lsp_installer.on_server_ready(function(server)
   local opts = {
     on_attach = on_attach,
@@ -136,24 +150,23 @@ require'nvim-web-devicons'.setup {
 }
 require'nvim-web-devicons'.get_icons()
 
-
 local alpha = require("alpha")
 local dashboard = require("alpha.themes.dashboard")
 local date = os.date("%A, %d %B %Y")
 
 dashboard.section.header.val = {
- "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
- "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
- "  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
- "  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
- "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
- "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
- "                                                     ",
+ "   ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
+ "   ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
+ "   ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
+ "   ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
+ "   ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
+ "   ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
+ "                                                      ",
 string.format("                %s                ", date),
 }
 
 dashboard.section.buttons.val = {
-    dashboard.button( "e", "󰈤 󰨃 New file" , "<cmd>ene <BAR> startinsert <cr>"),
+    dashboard.button( "n", "󰈤 󰨃 New file" , "<cmd>ene <BAR> startinsert <cr>"),
     dashboard.button( "f", "󰮗 󰨃 Find files", "<cmd>cd $HOME/Projects/ | Telescope find_files<cr>"),
     dashboard.button( "r", "󱀸 󰨃 Recent files"   , "<cmd>Telescope oldfiles<cr>"),
     dashboard.button( "s", "󰘮 󰨃 Settings" , "<cmd>tabnew $MYVIMRC <cr>"),

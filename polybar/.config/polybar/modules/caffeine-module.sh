@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 if [ $(ps aux | grep "xidlehook" |  wc -l) -eq 2 ]
 then
 	echo "󰤄"

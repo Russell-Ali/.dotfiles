@@ -174,4 +174,4 @@ super + ctrl + i
 
 # full and regional screenshot with maim
 super + {shift , alt} + s
-    maim -u ~/Pictures/$(date +%s).png {_,-sm 10}
+    maim -u ~/Pictures/Screenshot-$(date +%s).png {_,-sm 10}; notify-send -u low 'Screenshot saved' -t 1200
