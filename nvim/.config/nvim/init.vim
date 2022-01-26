@@ -22,6 +22,8 @@ set ignorecase
 set smartcase
 set filetype=on
 set background=dark
+set spelllang=en_us
+set spellsuggest=best,9
 
 colorscheme NeoSolarized
 syntax enable

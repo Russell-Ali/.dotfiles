@@ -10,6 +10,10 @@ zstyle :compinstall filename '/home/rasul/.zshrc'
 # Enable Colors
 autoload -U colors && colors
 
+# environment variables
+export MOZ_USE_XINPUT2=1
+export DESKTOP_SESSION='bspwm'
+
 # Key bindings
 bindkey ";5C" forward-word
 bindkey ";5D" backward-word
@@ -63,7 +67,6 @@ unzipf() {
 }
 
 # screenfetch
-export DESKTOP_SESSION='bspwm'
 /home/rasul/sources/fetch-master/fm6000 -l 9 -c random -f /home/rasul/sources/fetch-master/empty.txt 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
