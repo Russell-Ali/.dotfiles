@@ -150,7 +150,7 @@ ctrl + shift + l
 
 # drun promt for power menu
 super + shift + x 
-	/home/rasul/sources/scripts/powermenu.sh
+	$HOME/sources/scripts/powermenu.sh
 
 # browser (librewolf)
 super + r
@@ -170,7 +170,7 @@ super + v
 
 # toggle hidden status of focuesd window
 super + ctrl + i
-	/home/rasul/sources/scripts/hide-window.sh
+	$HOME/.config/bspwm/hide-window.sh
 
 # full and regional screenshot with maim
 super + {shift , alt} + s

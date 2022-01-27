@@ -5,11 +5,11 @@
 ##############
 
 # restore wallpaper
-/home/rasul/.fehbg &
+$HOME/.fehbg &
 # start compositor
 picom &
 # polybar starter
-.config/polybar/launch.sh & 
+$HOME/.config/polybar/launch.sh &
 # start polkit
 polkit-dumb-agent &
 # set the cursor
@@ -17,13 +17,19 @@ xsetroot -cursor_name left_ptr &
 # set key repeat and delay
 xset r rate 330 40 &
 # lock screen after 5 mins and suspend 10 mins after that
-/home/rasul/sources/scripts/locknsleep.sh &
+$HOME/sources/scripts/locknsleep.sh &
 # notfication deamon
 killall -q  dunst;  dunst &
 # start clipboard manager
 clipmenud &
 # capslock = esc and  shift + capslock = capslock
 xmodmap -e 'clear lock' -e 'keycode 66 = Escape Caps_Lock NoSymbol NoSymbol' &
+
+#################
+# BSPWM swallow #
+#################
+
+pgrep bspswallow || $HOME/.config/bspwm/bspswallow &
 
 ###########
 # Configs #

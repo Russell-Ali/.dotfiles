@@ -9,7 +9,7 @@ set noerrorbells
 set hidden
 set noswapfile
 set nobackup
-set undodir=$HOME/.vim/undo
+set undodir=$HOME/.local/share/nvim/undo
 set undofile
 set nowrap
 set incsearch
@@ -24,8 +24,10 @@ set filetype=on
 set background=dark
 set spelllang=en_us
 set spellsuggest=best,9
+set complete+=kspell
 
 colorscheme NeoSolarized
+hi EndOfBuffer ctermfg=bg
 syntax enable
 
 let mapleader = " "
@@ -61,8 +63,8 @@ autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no
 
 vnoremap <C-y> "+y
 vnoremap <C-x> "+x
-nnoremap <C-p> "+P
-vnoremap <C-p> "+P
+nnoremap <C-p> "+p
+vnoremap <C-p> "+p
 noremap <F7> <cmd>set spell!<cr>
 nnoremap <leader><Tab> <cmd>bnext<cr>
 nnoremap <leader><S-Tab> <cmd>bprevious<cr>
@@ -100,7 +102,6 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'goolord/alpha-nvim'
 Plug 'numToStr/Comment.nvim'
 Plug 'voldikss/vim-floaterm'
-Plug 'ThePrimeagen/vim-be-good'
 call plug#end()
 
 lua << EOF
@@ -171,7 +172,7 @@ dashboard.section.buttons.val = {
     dashboard.button( "n", "󰈤 󰨃 New file" , "<cmd>ene <BAR> startinsert <cr>"),
     dashboard.button( "f", "󰮗 󰨃 Find files", "<cmd>cd $HOME/Projects/ | Telescope find_files<cr>"),
     dashboard.button( "r", "󱀸 󰨃 Recent files"   , "<cmd>Telescope oldfiles<cr>"),
-    dashboard.button( "s", "󰘮 󰨃 Settings" , "<cmd>tabnew $MYVIMRC <cr>"),
+    dashboard.button( "s", "󰘮 󰨃 Settings" , "<cmd>e $MYVIMRC <cr>"),
     dashboard.button( "q", "󰈆 󰨃 Quit NVIM", "<cmd>qa<CR>"),
 }
 
@@ -188,7 +189,6 @@ dashboard.section.footer.val = {
  string.format("Currently, %d plugins installed", plugs),
  "                               ",
  string.format("             %s             ",version ),
- "","","","","","","","","","","","","","","","",
 }
 alpha.setup(dashboard.opts)
 

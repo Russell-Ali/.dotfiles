@@ -193,25 +193,25 @@ animation-charging-framerate = 750
 
 [module/bluetooth]
 type = custom/script
-exec = /home/rasul/.config/polybar/modules/bluetooth-module.sh
+exec = $HOME/.config/polybar/modules/bluetooth-module.sh
 interval = 1
-click-left = /home/rasul/.config/polybar/modules/bluetooth-toggle.sh
+click-left = $HOME/.config/polybar/modules/bluetooth-toggle.sh
 
 [module/caffeine]
 type = custom/script
-exec = /home/rasul/.config/polybar/modules/caffeine-module.sh
+exec = $HOME/.config/polybar/modules/caffeine-module.sh
 interval = 1
-click-left = /home/rasul/.config/polybar/modules/caffeine-toggle.sh
+click-left = $HOME/.config/polybar/modules/caffeine-toggle.sh
 label = [%output%]
 
 [module/packages]
 type = custom/script
-exec = /home/rasul/.config/polybar/modules/packages-module.sh
+exec = $HOME/.config/polybar/modules/packages-module.sh
 interval = 5
 
 [module/kernel]
 type = custom/script
-exec = /home/rasul/.config/polybar/modules/kernel-module.sh
+exec = $HOME/.config/polybar/modules/kernel-module.sh
 label = 󰻀 %output%
 
 [settings]
