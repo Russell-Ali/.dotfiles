@@ -152,9 +152,9 @@ ctrl + shift + l
 super + shift + x 
 	$HOME/sources/scripts/powermenu.sh
 
-# browser (librewolf)
+# browser (firefox)
 super + r
-	librewolf
+	firefox
 
 # filemanager (thunar)
 super + e

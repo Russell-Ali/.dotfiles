@@ -25,6 +25,7 @@ set background=dark
 set spelllang=en_us
 set spellsuggest=best,9
 set complete+=kspell
+set updatetime=100
 
 colorscheme NeoSolarized
 hi EndOfBuffer ctermfg=bg
@@ -49,6 +50,8 @@ let g:airline_section_z = '%-c | %-p%%'
 let g:airline#extensions#default#layout = [
             \ [ 'a', 'b', 'c' ],
             \ [ 'x', 'z', 'error', 'warning' ]]
+let g:airline#extensions#hunks#non_zero_only = 1
+let g:airline_symbols = { 'branch' : '󰘬 ', 'readonly' : '󰌾'}
 
 let g:floaterm_wintype = 'vsplit'
 let g:floaterm_width = 0.2
@@ -102,6 +105,8 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'goolord/alpha-nvim'
 Plug 'numToStr/Comment.nvim'
 Plug 'voldikss/vim-floaterm'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 lua << EOF
