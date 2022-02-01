@@ -5,14 +5,14 @@ SAVEHIST=1000
 setopt HIST_IGNORE_ALL_DUPS
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/rasul/.zshrc'
+zstyle :compinstall filename '$HOME/.zshrc'
 
 # Enable Colors
 autoload -U colors && colors
 
 # environment variables
 export MOZ_USE_XINPUT2=1
-export DESKTOP_SESSION='bspwm'
+export PATH="$HOME/sources/scripts:$PATH"
 
 # Key bindings
 bindkey ";5C" forward-word
@@ -41,6 +41,7 @@ SPACESHIP_DIR_LOCK_SYMBOL=" 󰌾 "
 SPACESHIP_GIT_BRANCH_PREFIX="󰘬 "
 SPACESHIP_GIT_STATUS_AHEAD="󰭾 "
 SPACESHIP_GIT_STATUS_BEHIND="󰭽 "
+SPACESHIP_PROMPT_ORDER=(dir git package node rust golang exec_time line_sep jobs exit_code char)
 
 # startx
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi
@@ -53,7 +54,8 @@ alias ls="ls --color"
 alias ll="ls -lht --color"
 alias untar='tar xvf'
 alias grep='grep --color'
-alias rd='rm -rf'
+alias rd='rm -r'
+alias rf='rm -rfv'
 alias mv='mv -i'
 alias suv='sudo nvim'
 alias suvi='sudo nvim'
@@ -71,6 +73,6 @@ unzipf() {
 }
 
 # screenfetch
-/home/rasul/sources/fetch-master/fm6000 -l 9 -c random -f /home/rasul/sources/fetch-master/empty.txt 
+# $HOME/sources/fetch-master/fm6000 -l 9 -c random -f $HOME/sources/fetch-master/empty.txt
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

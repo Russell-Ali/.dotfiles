@@ -27,7 +27,7 @@ set spellsuggest=best,9
 set complete+=kspell
 set updatetime=100
 
-colorscheme NeoSolarized
+colorscheme gruvbox
 hi EndOfBuffer ctermfg=bg
 syntax enable
 
@@ -45,13 +45,19 @@ let g:coq_settings = {'auto_start': 'shut-up' , 'display.icons.mode' : 'short' ,
     \ "Value": "", "Variable": "" },
     \ "clients.snippets.short_name" : "SNP"}
 
-let g:airline#extensions#bufferline#enabled = 1
 let g:airline_section_z = '%-c | %-p%%'
 let g:airline#extensions#default#layout = [
             \ [ 'a', 'b', 'c' ],
             \ [ 'x', 'z', 'error', 'warning' ]]
 let g:airline#extensions#hunks#non_zero_only = 1
-let g:airline_symbols = { 'branch' : '󰘬 ', 'readonly' : '󰌾'}
+let g:airline#extensions#tabline#enabled = 0
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_symbols.branch = '󰘬 '
+let g:airline_symbols.readonly = '󰌾'
+let g:airline_symbols.dirty='󱈸'
 
 let g:floaterm_wintype = 'vsplit'
 let g:floaterm_width = 0.2
@@ -68,7 +74,7 @@ vnoremap <C-y> "+y
 vnoremap <C-x> "+x
 nnoremap <C-p> "+p
 vnoremap <C-p> "+p
-noremap <F7> <cmd>set spell!<cr>
+noremap  <F7> <cmd>set spell!<cr>
 nnoremap <leader><Tab> <cmd>bnext<cr>
 nnoremap <leader><S-Tab> <cmd>bprevious<cr>
 nnoremap <leader>c <cmd>bd<cr>
@@ -89,7 +95,6 @@ nnoremap <leader>nf <cmd>NERDTreeFind<cr>
 nnoremap <leader>nn <cmd>NERDTree<cr>
 
 call plug#begin()
-Plug 'bling/vim-bufferline'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
