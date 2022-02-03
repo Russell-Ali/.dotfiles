@@ -7,6 +7,7 @@ font_size 14.0
 # disable_ligatures always
 scrollback_lines -1
 enable_audio_bell no
+input_delay 1
 
 shell_integration disabled
 
@@ -22,6 +23,6 @@ map kitty_mod+d    	   scroll_page_down
 
 
 # BEGIN_KITTY_THEME
-# Gruvbox Dark
+# Tomorrow
 include current-theme.conf
 # END_KITTY_THEME

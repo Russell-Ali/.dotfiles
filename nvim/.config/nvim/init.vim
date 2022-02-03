@@ -26,9 +26,10 @@ set spelllang=en_us
 set spellsuggest=best,9
 set complete+=kspell
 set updatetime=100
+set termguicolors
 
 colorscheme gruvbox
-hi EndOfBuffer ctermfg=bg
+hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 syntax enable
 
 let mapleader = " "
@@ -50,7 +51,7 @@ let g:airline#extensions#default#layout = [
             \ [ 'a', 'b', 'c' ],
             \ [ 'x', 'z', 'error', 'warning' ]]
 let g:airline#extensions#hunks#non_zero_only = 1
-let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -112,6 +113,7 @@ Plug 'numToStr/Comment.nvim'
 Plug 'voldikss/vim-floaterm'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'norcalli/nvim-colorizer.lua'
 call plug#end()
 
 lua << EOF
@@ -119,6 +121,8 @@ local lsp_installer = require("nvim-lsp-installer")
 local lspconfig = require("lspconfig")
 
 require('telescope').load_extension('fzf')
+
+require'colorizer'.setup()
 
 require('Comment').setup({
 toggler = {
