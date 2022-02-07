@@ -23,6 +23,6 @@ map kitty_mod+d    	   scroll_page_down
 
 
 # BEGIN_KITTY_THEME
-# 3024 Night
+# Black Metal
 include current-theme.conf
 # END_KITTY_THEME
