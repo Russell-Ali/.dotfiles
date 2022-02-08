@@ -51,7 +51,7 @@ let g:airline#extensions#default#layout = [
             \ [ 'a', 'b', 'c' ],
             \ [ 'x', 'z', 'error', 'warning' ]]
 let g:airline#extensions#hunks#non_zero_only = 1
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -71,6 +71,12 @@ let g:floaterm_keymap_toggle = '<C-t>'
 tnoremap <Esc> <C-\><C-n>
 autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no
 
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+autocmd BufEnter NERD_tree_1 setlocal signcolumn=no
+
+let g:mkdp_echo_preview_url = 1
+let g:mkdp_page_title = '${name}'
+
 vnoremap <C-y> "+y
 vnoremap <C-x> "+x
 nnoremap <C-p> "+p
@@ -78,8 +84,6 @@ vnoremap <C-p> "+p
 noremap  <F7> <cmd>set spell!<cr>
 nnoremap <leader><Tab> <cmd>bnext<cr>
 nnoremap <leader><S-Tab> <cmd>bprevious<cr>
-nnoremap <leader>c <cmd>bd<cr>
-nnoremap <leader><S-c> <cmd>bd!<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope oldfiles<cr>
@@ -109,11 +113,11 @@ Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'goolord/alpha-nvim'
-Plug 'numToStr/Comment.nvim'
 Plug 'voldikss/vim-floaterm'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'norcalli/nvim-colorizer.lua'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 call plug#end()
 
 lua << EOF
@@ -123,22 +127,6 @@ local lspconfig = require("lspconfig")
 require('telescope').load_extension('fzf')
 
 require'colorizer'.setup()
-
-require('Comment').setup({
-toggler = {
-    line = "''",
-    block = ";;",
-    },
-opleader = {
-    line = "'",
-    block = ";",
-    },
-extra = {
-    above = "'O",
-    below = "'o",
-    eol = "'a",
-    },
-})
 
 local function on_attach(client, bufnr)
     if client.resolved_capabilities.document_formatting then
