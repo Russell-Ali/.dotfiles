@@ -1,5 +1,4 @@
 set number relativenumber
-set guicursor=
 set mouse=a
 set ls=2
 set tabstop=4
@@ -27,10 +26,6 @@ set spellsuggest=best,9
 set complete+=kspell
 set updatetime=100
 set termguicolors
-
-colorscheme gruvbox
-hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
-syntax enable
 
 let mapleader = " "
 let g:coq_settings = {'auto_start': 'shut-up' , 'display.icons.mode' : 'short' ,
@@ -60,8 +55,10 @@ let g:airline_symbols.branch = '󰘬 '
 let g:airline_symbols.readonly = '󰌾'
 let g:airline_symbols.dirty='󱈸'
 
+let g:NERDTreeWinSize=40
+
 let g:floaterm_wintype = 'vsplit'
-let g:floaterm_width = 0.2
+let g:floaterm_width = 40
 let g:floaterm_keymap_new = '<A-\>'
 let g:floaterm_keymap_prev = '<A-[>'
 let g:floaterm_keymap_next = '<A-]>'
@@ -118,12 +115,18 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'gruvbox-community/gruvbox'
 call plug#end()
+
+colorscheme gruvbox
+hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
+syntax enable
 
 lua << EOF
 local lsp_installer = require("nvim-lsp-installer")
 local lspconfig = require("lspconfig")
 
+require('telescope').setup {}
 require('telescope').load_extension('fzf')
 
 require'colorizer'.setup()
