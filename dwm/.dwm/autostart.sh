@@ -13,7 +13,7 @@ xsetroot -cursor_name left_ptr &
 # set key repeat and delay
 xset r rate 330 40 &
 # lock screen after 5 mins and suspend 10 mins after that
-$HOME/sources/scripts/locknsleep.sh &
+locknsleep &
 # notfication deamon
 killall -q  dunst;  dunst &
 # start clipboard manager

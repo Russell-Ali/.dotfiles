@@ -12,7 +12,7 @@ autoload -U colors && colors
 
 # environment variables
 export MOZ_USE_XINPUT2=1
-export PATH="$HOME/sources/scripts:$PATH"
+export PATH="$HOME/Sources/scripts:$PATH"
 
 # Key bindings
 bindkey ";5C" forward-word
@@ -72,7 +72,5 @@ unzipf() {
     unzip $1 -d $folder
 }
 
-# screenfetch
-# $HOME/sources/fetch-master/fm6000 -l 9 -c random -f $HOME/sources/fetch-master/empty.txt
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

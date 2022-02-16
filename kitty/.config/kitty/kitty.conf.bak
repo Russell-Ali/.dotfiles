@@ -23,6 +23,6 @@ map kitty_mod+d    	   scroll_page_down
 
 
 # BEGIN_KITTY_THEME
-# Black Metal
+# Sea Shells
 include current-theme.conf
 # END_KITTY_THEME

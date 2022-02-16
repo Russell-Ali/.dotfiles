@@ -1,4 +1,5 @@
 set number relativenumber
+set guicursor=
 set mouse=a
 set ls=2
 set tabstop=4
