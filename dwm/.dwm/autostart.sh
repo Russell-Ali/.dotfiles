@@ -1,22 +1,22 @@
 #!/bin/sh
 
 # start status bar
-dwmblocks &
+pkill dwmblocks > /dev/null 2>&1; dwmblocks &
 # restore wallpaper
 $HOME/.fehbg &
 # start compositor
-picom &
+picom > /dev/null 2>&1&
 # start polkit
-lxsession &
+#lxsession &
 # set the cursor
-xsetroot -cursor_name left_ptr & 
+#xsetroot -cursor_name left_ptr & 
 # set key repeat and delay
 xset r rate 330 40 &
 # lock screen after 5 mins and suspend 10 mins after that
-locknsleep &
+#locknsleep &
 # notfication deamon
-killall -q  dunst;  dunst &
+pkill dunst > /dev/null 2>&1; dunst &
 # start clipboard manager
-clipmenud &
+clipmenud > /dev/null 2>&1&
 # update the bar for audio level to show at cold start
 sleep 1; pkill -RTMIN+1 dwmblocks &

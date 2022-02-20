@@ -67,9 +67,13 @@ alias cp='cp -r'
 alias btc='bluetoothctl power on; bluetoothctl connect'
 alias btd='bluetoothctl disconnect'
 
-unzipf() {
-    folder=$(echo "$1" | cut -f 1 -d '.')
-    unzip $1 -d $folder
+unzip() {
+    if [ -z "$2" ]; then
+        folder=$(echo "$1" | cut -f 1 -d '.')
+    else
+        folder=$(echo "$2")
+    fi
+    command unzip $1 -d $folder
 }
 
 # Load zsh-syntax-highlighting; should be last.

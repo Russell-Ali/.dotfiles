@@ -1,5 +1,5 @@
 set number relativenumber
-set guicursor=
+"set guicursor=
 set mouse=a
 set ls=2
 set tabstop=4
@@ -176,7 +176,7 @@ string.format("                %s                ", date),
 
 dashboard.section.buttons.val = {
     dashboard.button( "n", "󰈤 󰨃 New file" , "<cmd>ene <BAR> startinsert <cr>"),
-    dashboard.button( "f", "󰮗 󰨃 Find files", "<cmd>cd $HOME/Projects/ | Telescope find_files<cr>"),
+    dashboard.button( "f", "󰮗 󰨃 Find files", "<cmd>Telescope find_files<cr>"),
     dashboard.button( "r", "󱀸 󰨃 Recent files"   , "<cmd>Telescope oldfiles<cr>"),
     dashboard.button( "s", "󰘮 󰨃 Settings" , "<cmd>e $MYVIMRC <cr>"),
     dashboard.button( "q", "󰈆 󰨃 Quit NVIM", "<cmd>qa<CR>"),
