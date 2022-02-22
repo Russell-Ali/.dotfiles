@@ -12,7 +12,7 @@ autoload -U colors && colors
 
 # environment variables
 export MOZ_USE_XINPUT2=1
-export PATH="$HOME/Sources/scripts:$PATH"
+export PATH="$HOME/Sources/scripts:$HOME/.cargo/bin/:$PATH"
 
 # Key bindings
 bindkey ";5C" forward-word
@@ -48,7 +48,7 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi
 
 # custom aliases
 alias sudo='sudo '
-alias doas='sudo '
+alias \#='sudo'
 alias la="ls -lhAt --color"
 alias ls="ls --color"
 alias ll="ls -lht --color"

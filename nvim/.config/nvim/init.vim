@@ -1,5 +1,4 @@
 set number relativenumber
-"set guicursor=
 set mouse=a
 set ls=2
 set tabstop=4
@@ -25,11 +24,12 @@ set background=dark
 set spelllang=en_us
 set spellsuggest=best,9
 set complete+=kspell
-set updatetime=100
+set updatetime=400
 set termguicolors
 
 let mapleader = " "
 let g:coq_settings = {'auto_start': 'shut-up' , 'display.icons.mode' : 'short' ,
+    \ "clients.snippets.warn" : [],
     \ 'display.pum.kind_context' : [" ", ""], 'display.pum.source_context' : [" ", ""],
     \ 'display.icons.mappings' : {
     \ "Boolean": "", "Character": "", "Class": "", "Color": "",
@@ -47,16 +47,16 @@ let g:airline#extensions#default#layout = [
             \ [ 'a', 'b', 'c' ],
             \ [ 'x', 'z', 'error', 'warning' ]]
 let g:airline#extensions#hunks#non_zero_only = 1
-let g:airline#extensions#tabline#enabled = 0
+let g:airline_skip_empty_sections = 1
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 let g:airline_symbols.branch = '󰘬 '
-let g:airline_symbols.readonly = '󰌾'
+let g:airline_symbols.readonly = '󰌾 '
 let g:airline_symbols.dirty='󱈸'
 
-let g:NERDTreeWinSize=40
+let g:NERDTreeWinSize=30
 
 let g:floaterm_wintype = 'vsplit'
 let g:floaterm_width = 40
@@ -82,6 +82,8 @@ vnoremap <C-p> "+p
 noremap  <F7> <cmd>set spell!<cr>
 nnoremap <leader><Tab> <cmd>bnext<cr>
 nnoremap <leader><S-Tab> <cmd>bprevious<cr>
+nnoremap <leader>c <cmd>bd<cr>
+nnoremap <leader>C <cmd>bd!<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope oldfiles<cr>
@@ -108,7 +110,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'goolord/alpha-nvim'
 Plug 'voldikss/vim-floaterm'
@@ -121,6 +122,10 @@ call plug#end()
 
 colorscheme gruvbox
 hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
+hi SignColumn guibg=bg ctermbg=bg
+highlight GitGutterAdd guibg=bg ctermbg=bg
+highlight GitGutterChange guibg=bg ctermbg=bg
+highlight GitGutterDelete guibg=bg ctermbg=bg
 syntax enable
 
 lua << EOF
