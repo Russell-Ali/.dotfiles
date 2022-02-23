@@ -126,6 +126,7 @@ hi SignColumn guibg=bg ctermbg=bg
 highlight GitGutterAdd guibg=bg ctermbg=bg
 highlight GitGutterChange guibg=bg ctermbg=bg
 highlight GitGutterDelete guibg=bg ctermbg=bg
+highlight GitGutterChangeDelete guibg=bg ctermbg=bg
 syntax enable
 
 lua << EOF
