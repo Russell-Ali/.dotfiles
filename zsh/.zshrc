@@ -64,7 +64,7 @@ alias vim='nvim'
 alias vi='nvim'
 alias v='nvim'
 alias cp='cp -r'
-alias btc='bluetoothctl power on; bluetoothctl connect'
+alias btc='bluetoothctl power on && bluetoothctl connect'
 alias btd='bluetoothctl disconnect'
 
 unzip() {

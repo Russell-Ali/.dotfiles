@@ -1,6 +1,6 @@
 # make sxhkd reload its configuration files:
 super + Escape
-	pkill -USR1 -x sxhkd
+    pkill -USR1 -x sxhkd
 
 # media control
 XF86AudioRaiseVolume
@@ -44,7 +44,7 @@ super + e
 
 # clipboard manager (clipmenu)
 super + v
-	clipmenu -c -bw 2 -l 16 -h 28 -fn Dejavu-12
+	clipmenu -c
 
 # full and regional screenshot with maim
 super + {shift , alt} + s
