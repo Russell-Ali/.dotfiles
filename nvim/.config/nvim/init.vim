@@ -1,5 +1,6 @@
 set number relativenumber
 set mouse=a
+set guicursor=
 set ls=2
 set tabstop=4
 set shiftwidth=4
@@ -26,6 +27,7 @@ set spellsuggest=best,9
 set complete+=kspell
 set updatetime=400
 set termguicolors
+autocmd BufEnter * set fo-=c fo-=r fo-=o
 
 let mapleader = " "
 let g:coq_settings = {'auto_start': 'shut-up' , 'display.icons.mode' : 'short' ,
