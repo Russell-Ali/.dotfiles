@@ -27,7 +27,7 @@ XF86Calculator
 	galculator
 	
 # lockscreen
-ctrl + shift + l
+super + c
 	slock
 
 # drun promt for power menu

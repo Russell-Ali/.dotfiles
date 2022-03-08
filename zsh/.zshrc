@@ -67,6 +67,7 @@ alias cp='cp -r'
 alias btc='bluetoothctl power on && bluetoothctl connect'
 alias btd='bluetoothctl disconnect'
 alias btf='bluetoothctl power off'
+alias bte='bluetoothctl power on'
 
 unzip() {
     if [ -z "$2" ]; then

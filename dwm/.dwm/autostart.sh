@@ -11,7 +11,7 @@ pkill lxsession > /dev/null 2>&1; lxsession &
 # set key repeat and delay
 xset r rate 330 40 &
 # disable the Xscreen saver
-xset s off &
+xset s noblank &
 # lock screen after 5 mins and suspend 10 mins after that
 locknsleep &
 # notfication deamon

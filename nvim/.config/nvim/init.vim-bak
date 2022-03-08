@@ -59,15 +59,16 @@ let g:airline_symbols.dirty='󱈸'
 
 let g:NERDTreeWinSize=30
 
+let g:floaterm_wintype = 'vsplit'
+let g:floaterm_width = 40
 let g:floaterm_keymap_new = '<A-\>'
 let g:floaterm_keymap_prev = '<A-[>'
 let g:floaterm_keymap_next = '<A-]>'
 let g:floaterm_keymap_first = '<A-{>'
 let g:floaterm_keymap_last = '<A-}>'
 let g:floaterm_keymap_toggle = '<C-t>'
-let g:floaterm_keymap_kill =  '<A-c>'
-let g:floaterm_height = 0.7
 tnoremap <Esc> <C-\><C-n>
+autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no 
 
 autocmd BufEnter * set fo-=c fo-=r fo-=o
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
@@ -82,6 +83,7 @@ vnoremap <C-x> "+x
 nnoremap <C-p> "+p
 vnoremap <C-p> "+p
 noremap  <F7> <cmd>set spell!<cr>
+nnoremap <expr> <F9> &background ==# 'dark' ? '<cmd> set background=light <cr>' : '<cmd> set background=dark <cr>'
 nnoremap <leader><Tab> <cmd>bnext<cr>
 nnoremap <leader><S-Tab> <cmd>bprevious<cr>
 nnoremap <leader>c <cmd>bd<cr>
@@ -90,7 +92,6 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope oldfiles<cr>
 nnoremap <leader>gg <cmd>Telescope live_grep<cr>
-nnoremap <leader>gf <cmd>Telescope diagnostics<cr>
 nnoremap <leader>gD <cmd>lua vim.lsp.buf.declaration()<cr>
 nnoremap <leader>gd <cmd>lua vim.lsp.buf.definition()<cr>
 nnoremap <leader>K <cmd>lua vim.lsp.buf.hover()<cr>
