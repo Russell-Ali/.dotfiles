@@ -69,9 +69,9 @@ alias btd='bluetoothctl disconnect'
 alias btf='bluetoothctl power off'
 alias bte='bluetoothctl power on'
 
-unzip() {
+unzipf() {
     if [ -z "$2" ]; then
-        folder=$(echo "$1" | cut -f 1 -d '.')
+        folder=$(echo "$1" | head -c -5)
     else
         folder=$(echo "$2")
     fi

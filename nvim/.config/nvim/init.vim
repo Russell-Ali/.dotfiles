@@ -64,7 +64,7 @@ let g:floaterm_keymap_prev = '<A-[>'
 let g:floaterm_keymap_next = '<A-]>'
 let g:floaterm_keymap_first = '<A-{>'
 let g:floaterm_keymap_last = '<A-}>'
-let g:floaterm_keymap_toggle = '<C-t>'
+let g:floaterm_keymap_toggle = '<A-t>'
 let g:floaterm_keymap_kill =  '<A-c>'
 let g:floaterm_height = 0.7
 tnoremap <Esc> <C-\><C-n>
@@ -82,8 +82,10 @@ vnoremap <C-x> "+x
 nnoremap <C-p> "+p
 vnoremap <C-p> "+p
 noremap  <F7> <cmd>set spell!<cr>
+noremap  Q <Nop>
 nnoremap <leader><Tab> <cmd>bnext<cr>
 nnoremap <leader><S-Tab> <cmd>bprevious<cr>
+nnoremap <leader>zz <cmd>ZenMode<cr>
 nnoremap <leader>c <cmd>bd<cr>
 nnoremap <leader>C <cmd>bd!<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -98,13 +100,12 @@ nnoremap <leader>gi <cmd>lua vim.lsp.buf.implementation()<cr>
 nnoremap <leader>D <cmd>lua vim.lsp.buf.type_definition()<cr>
 nnoremap <leader>F <cmd>lua vim.lsp.buf.formatting()<cr>
 nnoremap <leader>gr <cmd>lua vim.lsp.buf.references()<cr>
-nnoremap <C-n> <cmd>NERDTreeToggle<cr>
-nnoremap <leader>nf <cmd>NERDTreeFind<cr>
-nnoremap <leader>nn <cmd>NERDTree<cr>
+nnoremap <A-n> <cmd>NERDTreeToggle<cr>
 
 call plug#begin()
 Plug 'lewis6991/impatient.nvim'
 Plug 'tpope/vim-commentary'
+Plug 'folke/zen-mode.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
@@ -140,6 +141,25 @@ lua << EOF
 local lsp_installer = require("nvim-lsp-installer")
 local lspconfig = require("lspconfig")
 
+require("zen-mode").setup {
+  window = {
+    backdrop = 1,
+    height = 1,
+    width = 80,
+    options = {
+      signcolumn = "no",
+      statusline = "laststatus=0",
+      number = false,
+      relativenumber = false,
+    },
+  plugins = {
+    options = {
+      enabled = true,
+    },
+    twilight = { enabled = false },
+  },
+  },
+}
 require('telescope').setup {}
 require('telescope').load_extension('fzf')
 
