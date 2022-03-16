@@ -8,10 +8,8 @@ $HOME/.fehbg &
 picom > /dev/null 2>&1 &
 # start polkit
 pkill lxsession > /dev/null 2>&1; lxsession &
-# set key repeat and delay
-xset r rate 330 40 &
-# disable the Xscreen saver
-xset s noblank &
+# set key repeat and delay and disable the Xscreen saver
+xset r rate 330 40 s noblank &
 # lock screen after 5 mins and suspend 10 mins after that
 locknsleep &
 # notfication deamon

@@ -76,6 +76,7 @@ autocmd FileType alpha let airline_section_c = ' '
 
 let g:mkdp_echo_preview_url = 1
 let g:mkdp_page_title = '${name}'
+let g:mkdp_browser = 'surf'
 
 vnoremap <C-y> "+y
 vnoremap <C-x> "+x
@@ -188,14 +189,15 @@ local dashboard = require("alpha.themes.dashboard")
 local date = os.date("%A, %d %B %Y")
 
 dashboard.section.header.val = {
- "   ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
- "   ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
- "   ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
- "   ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
- "   ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
- "   ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
- "                                                      ",
-string.format("                %s                ", date),
+"       ┏━━━┓━━━━━━━━━━━━━      ",
+"       ┃┏━┓┃━━━━━━━━━━━━━      ",
+"       ┃┃━┗┛┏━┓┏━━┓━┏┓━┏┓      ",
+"       ┃┃┏━┓┃┏┛┗━┓┃━┃┃━┃┃      ",
+"       ┃┗┻━┃┃┃━┃┗┛┗┓┃┗━┛┃      ",
+"       ┗━━━┛┗┛━┗━━━┛┗━┓┏┛      ",
+"       ━━━━━━━━━━━━━┏━┛┃━      ",
+"       ━━━━━━━━━━━━━┗━━┛━      ",
+string.format("     %s      ", date),
 }
 
 dashboard.section.buttons.val = {
