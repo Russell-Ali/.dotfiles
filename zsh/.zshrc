@@ -49,13 +49,14 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi
 # custom aliases
 alias sudo='sudo '
 alias \#='sudo'
+alias so='source $HOME/.zshrc'
 alias la="ls -lhAt --color"
 alias ls="ls --color"
 alias ll="ls -lht --color"
 alias untar='tar xvf'
 alias grep='grep --color'
 alias rd='rm -r'
-alias rf='rm -rfv'
+alias rf='rm -rf'
 alias mv='mv -i'
 alias suv='sudo nvim'
 alias suvi='sudo nvim'
