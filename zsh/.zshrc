@@ -69,6 +69,8 @@ alias btc='bluetoothctl power on && bluetoothctl connect'
 alias btd='bluetoothctl disconnect'
 alias btf='bluetoothctl power off'
 alias bte='bluetoothctl power on'
+alias won='nmcli radio wifi on'
+alias woff='nmcli radio wifi off'
 
 unzipf() {
     if [ -z "$2" ]; then

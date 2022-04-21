@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # start status bar
-pkill dwmblocks > /dev/null 2>&1; dwmblocks &
+#pkill dwmblocks > /dev/null 2>&1; dwmblocks &
 # restore wallpaper
 $HOME/.fehbg &
 # start compositor
@@ -17,4 +17,4 @@ pkill dunst > /dev/null 2>&1; dunst &
 # start clipboard manager
 clipmenud > /dev/null 2>&1 &
 # update the bar for audio level to show at cold start
-pkill -RTMIN+1 dwmblocks &
+sleep 1; pkill -RTMIN+1 dwmblocks &
