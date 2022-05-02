@@ -27,7 +27,7 @@ XF86Calculator
 	galculator
 	
 # lockscreen
-super + c
+super + x
 	slock
 
 # drun promt for power menu
@@ -37,6 +37,10 @@ super + shift + x
 # browser (firefox)
 super + r
 	firefox
+
+# browser (chromium)
+super + c
+	chromium
 
 # filemanager (pcmanfm)
 super + e
