@@ -43,9 +43,6 @@ SPACESHIP_GIT_STATUS_AHEAD="󰭾 "
 SPACESHIP_GIT_STATUS_BEHIND="󰭽 "
 SPACESHIP_PROMPT_ORDER=(dir git package node rust golang exec_time line_sep jobs exit_code char)
 
-# startx
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi
-
 # custom aliases
 alias sudo='sudo '
 alias \#='sudo'

@@ -8,7 +8,7 @@
 PS1='[\u@\h \W]\$ '
 
 # startx
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi
+# if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi
 
 # custom aliases
 alias sudo='sudo '

@@ -14,6 +14,7 @@ set smartindent
 set nohlsearch
 set noshowmode
 set signcolumn=yes
+set laststatus=3
 set ignorecase
 set smartcase
 set filetype=on
@@ -100,9 +101,11 @@ let g:airline_symbols.dirty='󱈸'
 
 "----------"
 
+augroup stuff
 autocmd BufEnter * set fo-=c fo-=r fo-=o
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 autocmd BufEnter NERD_tree_1 setlocal signcolumn=no
+augroup end
 
 "----------"
 
