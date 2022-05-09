@@ -16,5 +16,5 @@ locknsleep &
 pkill dunst > /dev/null 2>&1; dunst &
 # start clipboard manager
 clipmenud > /dev/null 2>&1 &
-# update the bar for audio level to show at cold start
+# update the bar for audio level to show at boot
 sleep 1; pkill -RTMIN+1 dwmblocks &

@@ -1,3 +1,6 @@
+# start xserver
+[ "$(tty)" = "/dev/tty1" ] && sx
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -12,7 +15,6 @@ autoload -U colors && colors
 
 # environment variables
 export MOZ_USE_XINPUT2=1
-export PATH="$HOME/Sources/scripts:$HOME/.cargo/bin/:$PATH"
 
 # Key bindings
 bindkey ";5C" forward-word
