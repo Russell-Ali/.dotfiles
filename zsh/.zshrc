@@ -1,6 +1,9 @@
 # start xserver
 [ "$(tty)" = "/dev/tty1" ] && sx
 
+# disable default x screen saver
+xset s off
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
