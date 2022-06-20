@@ -1,5 +1,5 @@
 # start xserver
-[ "$(tty)" = "/dev/tty1" ] && sx
+[ "$(tty)" = "/dev/tty1" ] && startx
 
 # disable default x screen saver
 xset s off
@@ -52,11 +52,11 @@ SPACESHIP_PROMPT_ORDER=(dir git package node rust golang exec_time line_sep jobs
 alias sudo='sudo '
 alias \#='sudo'
 alias so='source $HOME/.zshrc'
-alias la="ls -lhAt --color"
-alias ls="ls --color"
-alias ll="ls -lht --color"
+alias la="lsd -lhAt --color=always"
+alias ls="lsd --color=always"
+alias ll="lsd -lht --color=always"
 alias untar='tar xvf'
-alias grep='grep --color'
+alias grep='grep --color=always'
 alias rd='rm -r'
 alias rf='rm -rf'
 alias mv='mv -i'

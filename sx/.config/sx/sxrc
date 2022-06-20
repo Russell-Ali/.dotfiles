@@ -1,5 +1,0 @@
-#!/bin/sh
-export PATH="$HOME/Sources/scripts:$PATH"
-dwmblocks &
-sxhkd &
-exec dwm
