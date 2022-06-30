@@ -34,11 +34,20 @@ vnoremap <C-x> "+x
 nnoremap <C-p> "+p
 vnoremap <C-p> "+p
 noremap  <F7> <cmd>set spell!<cr>
-noremap  Q <Nop>
 nnoremap <leader><Tab> <cmd>bnext<cr>
 nnoremap <leader><S-Tab> <cmd>bprevious<cr>
 nnoremap <leader>c <cmd>bd<cr>
 nnoremap <leader>C <cmd>bd!<cr>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-left> <C-w>r
+nnoremap <C-right> <C-w>R
+nnoremap <leader>w <cmd>w<cr>
+nnoremap <leader>r <cmd>w \| !./%<cr>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
 
 let g:floaterm_keymap_new = '<A-\>'
 let g:floaterm_keymap_prev = '<A-[>'
@@ -65,11 +74,9 @@ nnoremap <leader>D <cmd>lua vim.lsp.buf.type_definition()<cr>
 nnoremap <leader>F <cmd>lua vim.lsp.buf.formatting()<cr>
 nnoremap <leader>gr <cmd>lua vim.lsp.buf.references()<cr>
 
-nnoremap <A-n> <cmd>NERDTreeToggle<cr>
+nnoremap <A-n> <cmd>NvimTreeToggle<cr>
 
 "----------"
-
-let g:NERDTreeWinSize=30
 
 let g:coq_settings = {'auto_start': 'shut-up' , 'display.icons.mode' : 'short' ,
     \ "clients.snippets.warn" : [],
@@ -102,9 +109,8 @@ let g:airline_symbols.dirty='󱈸'
 "----------"
 
 augroup stuff
+autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
 autocmd BufEnter * set fo-=c fo-=r fo-=o
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-autocmd BufEnter NERD_tree_1 setlocal signcolumn=no
 augroup end
 
 "----------"
@@ -119,7 +125,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'preservim/nerdtree'
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'kyazdani42/nvim-web-devicons'
@@ -191,6 +197,8 @@ require'nvim-web-devicons'.setup {
  default = true;
 }
 require'nvim-web-devicons'.get_icons()
+
+require("nvim-tree").setup()
 
 require'nvim-treesitter.configs'.setup {
     highlight = {
