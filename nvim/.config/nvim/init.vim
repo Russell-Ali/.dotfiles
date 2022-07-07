@@ -38,14 +38,10 @@ nnoremap <leader><Tab> <cmd>bnext<cr>
 nnoremap <leader><S-Tab> <cmd>bprevious<cr>
 nnoremap <leader>c <cmd>bd<cr>
 nnoremap <leader>C <cmd>bd!<cr>
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
 nnoremap <C-left> <C-w>r
 nnoremap <C-right> <C-w>R
 nnoremap <leader>w <cmd>w<cr>
-nnoremap <leader>r <cmd>w \| !./%<cr>
+nnoremap <leader>r <cmd>!./%<cr>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 
@@ -111,12 +107,14 @@ let g:airline_symbols.dirty='󱈸'
 augroup stuff
 autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
 autocmd BufEnter * set fo-=c fo-=r fo-=o
+autocmd BufNewFile,BufRead *.md,*.txt set spell | set wrap | nnoremap j gj| nnoremap k gk
 augroup end
 
 "----------"
 
 call plug#begin()
 Plug 'tpope/vim-commentary'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install'  }
 Plug 'folke/zen-mode.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
