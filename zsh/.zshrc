@@ -73,6 +73,8 @@ alias btf='bluetoothctl power off'
 alias bte='bluetoothctl power on'
 alias won='nmcli radio wifi on'
 alias woff='nmcli radio wifi off'
+alias usb-mount='udisksctl mount -b'
+alias nconf='nvim ~/.config/nvim/init.vim'
 
 unzipf() {
     if [ -z "$2" ]; then
