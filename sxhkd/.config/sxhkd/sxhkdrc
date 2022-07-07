@@ -4,10 +4,10 @@ super + Escape
 
 # media control
 XF86AudioRaiseVolume
-	pamixer --allow-boost --set-limit 120 -i 5; pkill -RTMIN+1 dwmblocks
+	pamixer --allow-boost --set-limit 130 -i 5; pkill -RTMIN+1 dwmblocks
 
 XF86AudioLowerVolume
-	pamixer --allow-boost --set-limit 120 -d 5; pkill -RTMIN+1 dwmblocks
+	pamixer --allow-boost --set-limit 130 -d 5; pkill -RTMIN+1 dwmblocks
 
 XF86AudioMute
 	pamixer -t; pkill -RTMIN+1 dwmblocks
