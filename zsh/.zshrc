@@ -17,7 +17,7 @@ zstyle :compinstall filename '$HOME/.zshrc'
 autoload -U colors && colors
 
 # environment variables
-export MOZ_USE_XINPUT2=1
+export EDITOR='/usr/bin/nvim'
 
 # Key bindings
 bindkey ";5C" forward-word
@@ -67,13 +67,13 @@ alias vim='nvim'
 alias vi='nvim'
 alias v='nvim'
 alias cp='cp -r'
-alias btc='bluetoothctl power on && bluetoothctl connect'
-alias btd='bluetoothctl disconnect'
-alias btf='bluetoothctl power off'
-alias bte='bluetoothctl power on'
-alias won='nmcli radio wifi on'
-alias woff='nmcli radio wifi off'
-alias usb-mount='udisksctl mount -b'
+#alias btc='bluetoothctl power on && bluetoothctl connect'
+#alias btd='bluetoothctl disconnect'
+#alias btf='bluetoothctl power off'
+#alias bte='bluetoothctl power on'
+#alias won='nmcli radio wifi on'
+#alias woff='nmcli radio wifi off'
+#alias usb-mount='udisksctl mount -b'
 alias nconf='nvim ~/.config/nvim/init.vim'
 
 unzipf() {
@@ -84,6 +84,4 @@ unzipf() {
     fi
     command unzip $1 -d $folder
 }
-
-# Load zsh-syntax-highlighting; should be last.
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+source /home/rasul/Sources/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
