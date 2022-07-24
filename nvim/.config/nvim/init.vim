@@ -24,6 +24,8 @@ set spellsuggest=best,9
 set complete+=kspell
 set updatetime=400
 set termguicolors
+set completeopt=menu,menuone,noselect
+set cursorline
 
 "----------"
 
@@ -44,12 +46,11 @@ nnoremap <leader>w <cmd>w<cr>
 nnoremap <leader>r <cmd>!./%<cr>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
+nnoremap <leader>s <cmd>set wrap!<cr>
 
 let g:floaterm_keymap_new = '<A-\>'
 let g:floaterm_keymap_prev = '<A-[>'
 let g:floaterm_keymap_next = '<A-]>'
-let g:floaterm_keymap_first = '<A-{>'
-let g:floaterm_keymap_last = '<A-}>'
 let g:floaterm_keymap_toggle = '<A-t>'
 let g:floaterm_keymap_kill =  '<A-c>'
 let g:floaterm_height = 0.7
@@ -74,20 +75,6 @@ nnoremap <A-n> <cmd>NvimTreeToggle<cr>
 
 "----------"
 
-let g:coq_settings = {'auto_start': 'shut-up' , 'display.icons.mode' : 'short' ,
-    \ "clients.snippets.warn" : [],
-    \ 'display.pum.kind_context' : [" ", ""], 'display.pum.source_context' : [" ", ""],
-    \ 'display.icons.mappings' : {
-    \ "Boolean": "", "Character": "", "Class": "", "Color": "",
-    \ "Constant": "", "Constructor": "", "Enum": "", "EnumMember": "",
-    \ "Event": "", "Field": "", "File": "", "Folder": "",
-    \ "Function": "", "Interface": "ﰮ", "Keyword": "", "Method": "",
-    \ "Module": "", "Number": "", "Operator": "Ψ", "Parameter": "",
-    \ "Property": "", "Reference": "", "Snippet": "", "String": "",
-    \ "Struct": "", "Text": "", "TypeParameter": "", "Unit": "",
-    \ "Value": "", "Variable": "" },
-    \ "clients.snippets.short_name" : "SNP"}
-
 let g:airline_section_z = '%-c | %-p%%'
 let g:airline#extensions#default#layout = [
             \ [ 'a', 'b', 'c' ],
@@ -98,9 +85,12 @@ let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-let g:airline_symbols.branch = '󰘬 '
-let g:airline_symbols.readonly = '󰌾 '
-let g:airline_symbols.dirty='󱈸'
+let g:airline_symbols.branch = ' '
+let g:airline_symbols.readonly = ' '
+let g:airline_symbols.dirty=''
+let g:airline_theme='minimalist'
+
+let g:mkdp_echo_preview_url = 1
 
 "----------"
 
@@ -108,6 +98,8 @@ augroup stuff
 autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
 autocmd BufEnter * set fo-=c fo-=r fo-=o
 autocmd BufNewFile,BufRead *.md,*.txt set spell | set wrap | nnoremap j gj| nnoremap k gk
+autocmd InsertEnter * highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=234 guifg=NONE guibg=#1c1c1c
+autocmd InsertLeave * highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=233 guifg=NONE guibg=#121212
 augroup end
 
 "----------"
@@ -121,22 +113,27 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'vim-airline/vim-airline'
 Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/nvim-lsp-installer'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'voldikss/vim-floaterm'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'norcalli/nvim-colorizer.lua'
-Plug 'gruvbox-community/gruvbox'
+" Auto Complation
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 call plug#end()
 
 "----------"
 
-colorscheme gruvbox
+colorscheme 256_noir
+highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=233 guifg=NONE guibg=#121212
 hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 hi SignColumn guibg=bg ctermbg=bg
 highlight GitGutterAdd guibg=bg ctermbg=bg
@@ -149,9 +146,94 @@ syntax enable
 
 lua << EOF
 
-local lsp_installer = require("nvim-lsp-installer")
-
 local lspconfig = require("lspconfig")
+
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+vim.lsp.protocol.make_client_capabilities().textDocument.completion.completionItem.snippetSupport = true
+
+require'lspconfig'.tsserver.setup{
+    capabilities = capabilities
+}
+require'lspconfig'.pyright.setup{
+    capabilities = capabilities
+}
+
+require'lspconfig'.html.setup {
+  capabilities = capabilities
+}
+
+require'lspconfig'.cssls.setup {
+  capabilities = capabilities
+}
+
+require'lspconfig'.bashls.setup{}
+
+require'lspconfig'.eslint.setup{
+filetypes =
+    { "javascript", "javascriptreact", "javascript.jsx", "vue" },
+}
+
+require'lspconfig'.jsonls.setup{}
+
+require'lspconfig'.tsserver.setup{
+filetypes =
+    { "typescript", "typescriptreact", "typescript.tsx" },
+}
+
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
+local luasnip = require("luasnip")
+
+local cmp = require'cmp'
+
+cmp.setup({
+  snippet = {
+      expand = function(args)
+        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      end,
+    },
+window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+    },
+mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+    }),
+sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'luasnip' },
+    }, {
+      { name = 'buffer' },
+    })
+})
 
 require("zen-mode").setup {
   window = {
@@ -176,15 +258,6 @@ require("zen-mode").setup {
 require('telescope').setup {}
 require('telescope').load_extension('fzf')
 
-require'colorizer'.setup()
-
-lsp_installer.on_server_ready(function(server)
-  local opts = {
-    on_attach = on_attach,
-  }
-  server:setup(opts)
-end)
-
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
@@ -194,9 +267,14 @@ end
 require'nvim-web-devicons'.setup {
  default = true;
 }
+
 require'nvim-web-devicons'.get_icons()
 
-require("nvim-tree").setup()
+require("nvim-tree").setup {
+      git = {
+        ignore = false,
+      },
+}
 
 require'nvim-treesitter.configs'.setup {
     highlight = {
@@ -207,7 +285,7 @@ require'nvim-treesitter.configs'.setup {
         }
     },
     indent = {
-        enable = false,
+        enable = true,
         disable = {},
     },
 }
