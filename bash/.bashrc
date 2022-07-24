@@ -7,8 +7,8 @@
 
 PS1='[\u@\h \W]\$ '
 
-# startx
-# if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi
+# Set key repeat speed
+xset r rate 330 40
 
 # custom aliases
 alias sudo='sudo '
