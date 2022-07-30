@@ -36,6 +36,7 @@ vnoremap <C-x> "+x
 nnoremap <C-p> "+p
 vnoremap <C-p> "+p
 noremap  <F7> <cmd>set spell!<cr>
+nnoremap <silent> <expr> <F9> ':set bg='.(&bg=='dark' ? "light" : "dark")."<cr>"
 nnoremap <leader><Tab> <cmd>bnext<cr>
 nnoremap <leader><S-Tab> <cmd>bprevious<cr>
 nnoremap <leader>c <cmd>bd<cr>
@@ -105,6 +106,10 @@ augroup end
 "----------"
 
 call plug#begin()
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'tpope/vim-commentary'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install'  }
 Plug 'folke/zen-mode.nvim'
@@ -132,14 +137,7 @@ call plug#end()
 
 "----------"
 
-colorscheme 256_noir
-highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=233 guifg=NONE guibg=#121212
-hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
-hi SignColumn guibg=bg ctermbg=bg
-highlight GitGutterAdd guibg=bg ctermbg=bg
-highlight GitGutterChange guibg=bg ctermbg=bg
-highlight GitGutterDelete guibg=bg ctermbg=bg
-highlight GitGutterChangeDelete guibg=bg ctermbg=bg
+colorscheme PaperColor
 syntax enable
 
 "----------"
@@ -167,6 +165,10 @@ require'lspconfig'.cssls.setup {
 }
 
 require'lspconfig'.bashls.setup{}
+
+require'lspconfig'.svelte.setup{}
+
+require'lspconfig'.tailwindcss.setup{}
 
 require'lspconfig'.eslint.setup{
 filetypes =
