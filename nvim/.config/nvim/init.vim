@@ -26,6 +26,8 @@ set updatetime=400
 set termguicolors
 set completeopt=menu,menuone,noselect
 set cursorline
+set splitright
+set splitbelow
 
 "----------"
 
@@ -43,6 +45,10 @@ nnoremap <leader>c <cmd>bd<cr>
 nnoremap <leader>C <cmd>bd!<cr>
 nnoremap <C-left> <C-w>r
 nnoremap <C-right> <C-w>R
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 nnoremap <leader>w <cmd>w<cr>
 nnoremap <leader>r <cmd>!./%<cr>
 cnoremap <C-a> <Home>
@@ -99,8 +105,6 @@ augroup stuff
 autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
 autocmd BufEnter * set fo-=c fo-=r fo-=o
 autocmd BufNewFile,BufRead *.md,*.txt set spell | set wrap | nnoremap j gj| nnoremap k gk
-autocmd InsertEnter * highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=234 guifg=NONE guibg=#1c1c1c
-autocmd InsertLeave * highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=233 guifg=NONE guibg=#121212
 augroup end
 
 "----------"
@@ -206,7 +210,7 @@ mapping = cmp.mapping.preset.insert({
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ['<CR>'] = cmp.mapping.confirm({ select = false }),
       ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -231,9 +235,15 @@ mapping = cmp.mapping.preset.insert({
     }),
 sources = cmp.config.sources({
       { name = 'nvim_lsp' },
+      { name = 'buffer',
+      options = {
+        get_bufnrs = function()
+          return vim.api.nvim_list_bufs()
+        end
+      }
+      },
       { name = 'luasnip' },
     }, {
-      { name = 'buffer' },
     })
 })
 
