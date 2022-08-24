@@ -50,7 +50,6 @@ alias vim='nvim'
 alias vi='nvim'
 alias v='nvim'
 alias cp='cp -r'
-alias nconf='nvim ~/.config/nvim/init.vim'
 
 unzipf() {
     if [ -z "$2" ]; then

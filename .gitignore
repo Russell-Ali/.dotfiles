@@ -1,3 +1,4 @@
 current-theme.conf
 kitty.config.bak
-colors/
+nvim/.config/nvim/colors
+nvim/.config/nvim/plugin/packer_compiled.lua
