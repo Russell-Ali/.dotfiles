@@ -25,7 +25,6 @@ local options = {
     ignorecase = true,
     smartcase = true,
     filetype = 'on',
-    background = 'light',
     spelllang = 'en_us',
     spellsuggest = { 'best', 9 },
     updatetime = 400,
@@ -35,6 +34,8 @@ local options = {
     splitright = true,
     splitbelow = true,
     syntax = 'ON',
+    title = true,
+    inccommand = 'split',
 }
 -- Function to set from table above
 for k, v in pairs(options) do
@@ -44,7 +45,9 @@ end
 -- List of options to append to the defaults
 local appends = {
     complete = 'kspell',
-    fillchars = [[eob: ]]
+    fillchars = [[eob: ]],
+    wildignore = '*/node_modules/*',
+    path = '**',
 }
 -- Function to append from table above
 for k, v in pairs(appends) do

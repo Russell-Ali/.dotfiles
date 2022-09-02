@@ -21,6 +21,12 @@ return require('packer').startup({ function(use)
         require 'colorizer'.setup()
     }
 
+    -- lightspeed motions
+    use {
+        'ggandor/lightspeed.nvim',
+        requires = 'tpope/vim-repeat'
+    }
+
     -- impatient nvim
     use 'lewis6991/impatient.nvim'
 
