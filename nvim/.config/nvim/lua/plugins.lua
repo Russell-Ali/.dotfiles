@@ -18,7 +18,9 @@ return require('packer').startup({ function(use)
     -- neovim colorizer
     use {
         "norcalli/nvim-colorizer.lua",
+        setup = function()
         require 'colorizer'.setup()
+    end
     }
 
     -- lightspeed motions
@@ -34,12 +36,7 @@ return require('packer').startup({ function(use)
     use "neovim/nvim-lspconfig"
 
     -- lspinstaller
-    use {
-        "williamboman/nvim-lsp-installer",
-        require("nvim-lsp-installer").setup {
-            automatic_installation = true,
-        }
-    }
+    use "williamboman/nvim-lsp-installer"
 
     -- tree sitter
     use 'nvim-treesitter/nvim-treesitter'
@@ -78,14 +75,17 @@ return require('packer').startup({ function(use)
     -- web-dev icons
     use {
         'kyazdani42/nvim-web-devicons',
+        setup = function()
         require 'nvim-web-devicons'.setup {
             default = true;
         }
+    end
     }
 
     -- git signs
     use {
         'lewis6991/gitsigns.nvim',
+        setup = function()
         require('gitsigns').setup {
             numhl              = true,
             current_line_blame = true,
@@ -93,6 +93,7 @@ return require('packer').startup({ function(use)
                 interval = 100,
             },
         }
+    end
     }
 
     -- cmp
@@ -103,7 +104,9 @@ return require('packer').startup({ function(use)
     use 'hrsh7th/nvim-cmp'
     use {
         'L3MON4D3/LuaSnip',
+        setup = function()
         require("luasnip.loaders.from_snipmate").lazy_load()
+    end
     }
     use 'saadparwaiz1/cmp_luasnip'
 
