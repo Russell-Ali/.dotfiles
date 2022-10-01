@@ -9,9 +9,6 @@ zstyle :compinstall filename '$HOME/.zshrc'
 # Enable Colors
 autoload -U colors && colors
 
-# Set key repeat speed
-xset r rate 330 40
-
 # environment variables
 export EDITOR='/usr/bin/nvim'
 
@@ -59,4 +56,4 @@ unzipf() {
     fi
     command unzip $1 -d $folder
 }
-source /home/rasul/Sources/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/rasul/Code/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
