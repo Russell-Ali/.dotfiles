@@ -11,6 +11,8 @@ autoload -U colors && colors
 
 # environment variables
 export EDITOR='/usr/bin/nvim'
+export ANDROID_HOME='/home/rasul/Android/Sdk'
+export PATH=/home/rasul/Android/Sdk/emulator/:$PATH
 
 # Key bindings
 bindkey ";5C" forward-word

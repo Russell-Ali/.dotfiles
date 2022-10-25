@@ -27,7 +27,8 @@ local on_attach = function(client, bufnr)
   map('n', 'gi', vim.lsp.buf.implementation, bufopts)
   map('n', '<Space>D', vim.lsp.buf.type_definition, bufopts)
   map('n', 'gr', vim.lsp.buf.references, bufopts)
-  map('n', '<Space>f', vim.lsp.buf.format, bufopts)
+  map('n', '<Space>f', vim.lsp.buf.formatting, bufopts)
+  map('n', '<Space>qf', require 'telescope.builtin'.quickfix, bufopts)
 end
 
 lspconfig.sumneko_lua.setup {
