@@ -10,7 +10,7 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 vim.lsp.protocol.make_client_capabilities().textDocument.completion.completionItem.snippetSupport = true
 
 local map = vim.keymap.set
@@ -66,12 +66,12 @@ lspconfig.tailwindcss.setup {
   on_attach = on_attach
 }
 
-lspconfig.eslint.setup {
-  filetypes =
-  { "javascript", "javascriptreact", "javascript.jsx", "vue" },
-  capabilities = capabilities,
-  on_attach = on_attach
-}
+-- lspconfig.eslint.setup {
+--   filetypes =
+--   { "javascript", "javascriptreact", "javascript.jsx", "vue" },
+--   capabilities = capabilities,
+--   on_attach = on_attach
+-- }
 
 lspconfig.jsonls.setup {
   capabilities = capabilities,
@@ -80,7 +80,7 @@ lspconfig.jsonls.setup {
 
 lspconfig.tsserver.setup {
   filetypes =
-  { "typescript", "typescriptreact", "typescript.tsx" },
+  { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
   capabilities = capabilities,
   on_attach = on_attach
 }

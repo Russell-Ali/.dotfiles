@@ -16,10 +16,6 @@ map("n", "<C-j>", "<C-w>j", opts)
 map("n", "<C-k>", "<C-w>k", opts)
 map("n", "<C-l>", "<C-w>l", opts)
 
--- Better window rotation
--- map("", "<C-=>", "<C-w>r", opts)
--- map("", "<C-->", "<C-w>R", opts)
-
 -- Resize with arrows
 map("n", "<C-Up>", ":resize -2<CR>", opts)
 map("n", "<C-Down>", ":resize +2<CR>", opts)

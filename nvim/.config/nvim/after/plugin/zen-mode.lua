@@ -9,13 +9,13 @@ require("zen-mode").setup {
       number = false,
       relativenumber = false,
     },
-  plugins = {
-    options = {
-      enabled = true,
+    plugins = {
+      options = {
+        enabled = true,
+      },
+      twilight = { enabled = false },
     },
-    twilight = { enabled = false },
-  },
   },
 }
 
-vim.api.nvim_set_keymap("n", "<leader>zz", ":ZenMode<cr>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>zz", ":ZenMode<cr>", { noremap = true, silent = true })

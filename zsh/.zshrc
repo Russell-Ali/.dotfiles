@@ -11,8 +11,8 @@ autoload -U colors && colors
 
 # environment variables
 export EDITOR='/usr/bin/nvim'
-export ANDROID_HOME='/home/rasul/Android/Sdk'
-export PATH=/home/rasul/Android/Sdk/emulator/:$PATH
+export PATH=$HOME.spicetify/:$HOME.local/lib/python*/site-packages:$PATH
+export PROMPT="[%~] > "
 
 # Key bindings
 bindkey ";5C" forward-word
@@ -28,7 +28,7 @@ _comp_options+=(globdots)
 setopt autocd
 
 # starship promt
-eval "$(starship init zsh)"
+#eval "$(starship init zsh)"
 
 # custom aliases
 alias sudo='sudo '
