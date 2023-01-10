@@ -11,7 +11,7 @@ autoload -U colors && colors
 
 # environment variables
 export EDITOR='/usr/bin/nvim'
-export PATH=$HOME.spicetify/:$HOME.local/lib/python*/site-packages:$PATH
+export PATH=$HOME/.Android:$HOME/.Android/SDK/platform-tools/:$HOME/.cargo/bin:$HOME/.local/lib/python*/site-packages:$PATH
 export PROMPT="[%~] > "
 
 # Key bindings

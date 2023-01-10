@@ -33,7 +33,14 @@ end
 
 lspconfig.sumneko_lua.setup {
   capabilities = capabilities,
-  on_attach = on_attach
+  on_attach = on_attach,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' }
+      }
+    }
+  }
 }
 
 lspconfig.pyright.setup {
@@ -66,12 +73,15 @@ lspconfig.tailwindcss.setup {
   on_attach = on_attach
 }
 
--- lspconfig.eslint.setup {
---   filetypes =
---   { "javascript", "javascriptreact", "javascript.jsx", "vue" },
---   capabilities = capabilities,
---   on_attach = on_attach
--- }
+lspconfig.dartls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach
+}
+
+lspconfig.emmet_ls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach
+}
 
 lspconfig.jsonls.setup {
   capabilities = capabilities,
