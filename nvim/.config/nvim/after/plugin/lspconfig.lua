@@ -10,7 +10,7 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 vim.lsp.protocol.make_client_capabilities().textDocument.completion.completionItem.snippetSupport = true
 
 local map = vim.keymap.set
@@ -27,7 +27,9 @@ local on_attach = function(client, bufnr)
   map('n', 'gi', vim.lsp.buf.implementation, bufopts)
   map('n', '<Space>D', vim.lsp.buf.type_definition, bufopts)
   map('n', 'gr', vim.lsp.buf.references, bufopts)
-  map('n', '<Space>f', vim.lsp.buf.formatting, bufopts)
+  --format provided by language server
+  map('n', '<Space>f', vim.lsp.buf.format, bufopts)
+  map('n', '<Space>r', vim.lsp.buf.rename, bufopts)
   map('n', '<Space>qf', require 'telescope.builtin'.quickfix, bufopts)
 end
 
@@ -51,6 +53,19 @@ lspconfig.pyright.setup {
 lspconfig.html.setup {
   capabilities = capabilities,
   on_attach = on_attach
+}
+
+lspconfig.eslint.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  root_dir = function(fname)
+    return vim.loop.cwd()
+  end
+}
+
+lspconfig.rust_analyzer.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
 }
 
 lspconfig.cssls.setup {

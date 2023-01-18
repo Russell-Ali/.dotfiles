@@ -11,8 +11,28 @@ return require('packer').startup({ function(use)
     'nvim-telescope/telescope.nvim', tag = '0.1.x',
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
-  -- tokyo night
-  use 'folke/tokyonight.nvim'
+  -- kanagawa color scheme
+  use {
+    "rebelot/kanagawa.nvim",
+    require('kanagawa').setup()
+  }
+
+  -- toggle term
+  use { "akinsho/toggleterm.nvim", tag = '*', config = function()
+    require("toggleterm").setup {
+      open_mapping = [[<c-\>]],
+      direction = 'horizontal',
+      -- direction = 'vertical' | 'horizontal' | 'tab' | 'float',
+      size = function(term)
+        if term.direction == "horizontal" then
+          return 10
+        elseif term.direction == "vertical" then
+          return 40
+        end
+      end,
+      autochdir = true,
+    }
+  end }
 
   -- neovim colorizer
   use {
@@ -20,11 +40,6 @@ return require('packer').startup({ function(use)
     require 'colorizer'.setup()
   }
 
-  -- lightspeed motions
-  use {
-    'ggandor/lightspeed.nvim',
-    requires = 'tpope/vim-repeat'
-  }
 
   -- impatient nvim
   use 'lewis6991/impatient.nvim'
