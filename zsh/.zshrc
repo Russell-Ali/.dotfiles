@@ -12,7 +12,9 @@ autoload -U colors && colors
 # environment variables
 export EDITOR='/usr/bin/nvim'
 export PATH=$HOME/.Android:$HOME/.Android/SDK/platform-tools/:$HOME/.cargo/bin:$HOME/.local/lib/python*/site-packages:$PATH
-export PROMPT="[%~] > "
+
+# starship promtp
+eval "$(starship init zsh)"
 
 # Key bindings
 bindkey ";5C" forward-word
@@ -24,11 +26,9 @@ compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 _comp_options+=(globdots)
+
 # Auto cd
 setopt autocd
-
-# starship promt
-#eval "$(starship init zsh)"
 
 # custom aliases
 alias sudo='sudo '
@@ -58,4 +58,5 @@ unzipf() {
     fi
     command unzip $1 -d $folder
 }
-source /home/rasul/Code/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+source "$HOME/Code/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
