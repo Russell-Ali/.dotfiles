@@ -1,0 +1,33 @@
+# Copy to clipboard
+set selection-clipboard clipboard
+
+# Default to recolor
+set recolor
+
+# Mapping
+map r recolor
+map J zoom out
+map K zoom in
+map R rotate
+unmap f
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
+map <C-o> focus_inputbar ": open "
+
+# Open document in fit-width mode by default
+set adjust-open "best-fit"
+
+# One page per row by default
+set pages-per-row 1
+
+# Stop at page boundries
+set scroll-page-aware "true"
+set scroll-full-overlap 0.01
+set scroll-step 50
+
+# Zoom settings
+set zoom-min 10
+set guioptions ""
+
+# Font
+set font "DejaVu Sans 16"
