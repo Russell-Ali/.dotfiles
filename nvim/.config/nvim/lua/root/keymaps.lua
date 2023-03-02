@@ -5,10 +5,21 @@ local opts_expr = { noremap = true, silent = true, expr = true }
 -- Shorten the functions' name
 local map = vim.api.nvim_set_keymap
 
---Remap space as leader key
+-- Remap space as leader key
 map("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+
+-- Move the line
+map("n", "<A-j>", ":m .+1<CR>", opts)
+map("n", "<A-k>", ":m .-2<CR>", opts)
+
+-- Duplicate the line
+map("n", "<A-y>", ":t .<CR>", opts)
+
+-- Insert empty line(s)
+map("n", "<leader>o", "'m`' . v:count1 . 'o<Esc>``'", { expr = true, noremap = true, })
+map("n", "<leader>O", "'m`' . v:count1 . 'O<Esc>``'", { expr = true, noremap = true, })
 
 -- Better window navigation
 map("n", "<C-h>", "<C-w>h", opts)

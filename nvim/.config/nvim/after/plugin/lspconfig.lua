@@ -33,16 +33,10 @@ local on_attach = function(client, bufnr)
   map('n', '<Space>qf', require 'telescope.builtin'.quickfix, bufopts)
 end
 
-lspconfig.sumneko_lua.setup {
+lspconfig.clangd.setup {
   capabilities = capabilities,
-  on_attach = on_attach,
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { 'vim' }
-      }
-    }
-  }
+  on_attach = on_attach
+
 }
 
 lspconfig.pyright.setup {
@@ -107,5 +101,6 @@ lspconfig.tsserver.setup {
   filetypes =
   { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
   capabilities = capabilities,
+  cmd = { "typescript-language-server", "--stdio" },
   on_attach = on_attach
 }
