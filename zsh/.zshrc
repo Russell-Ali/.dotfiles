@@ -6,6 +6,9 @@ setopt HIST_IGNORE_ALL_DUPS
 
 zstyle :compinstall filename '$HOME/.zshrc'
 
+bindkey -v
+export KEYTIMEOUT=1
+
 # Enable Colors
 autoload -U colors && colors
 
