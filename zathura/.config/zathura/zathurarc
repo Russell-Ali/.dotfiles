@@ -1,9 +1,6 @@
 # Copy to clipboard
 set selection-clipboard clipboard
 
-# Default to recolor
-set recolor
-
 # Mapping
 map r recolor
 map J zoom out

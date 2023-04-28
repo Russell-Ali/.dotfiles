@@ -15,17 +15,9 @@ autocmd(
   }
 )
 
--- Automatically compile packer file on save
-autocmd(
-  { "BufWritePost" },
-  { pattern = "*/.config/nvim/*.lua",
-    command = [[source <afile> | PackerCompile]]
-  }
-)
-
 -- Format on save
-autocmd(
-  { "BufWritePre" },
-  { pattern = "*",
-    command = [[lua vim.lsp.buf.formatting_sync()]]
-  })
+-- autocmd(
+--   { "BufWritePre" },
+--   { pattern = "*",
+--     command = [[lua vim.lsp.buf.formatting_sync()]]
+--   })

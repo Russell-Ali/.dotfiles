@@ -6,15 +6,26 @@ setopt HIST_IGNORE_ALL_DUPS
 
 zstyle :compinstall filename '$HOME/.zshrc'
 
-bindkey -v
+# bindkey -v
 export KEYTIMEOUT=1
 
 # Enable Colors
 autoload -U colors && colors
 
 # environment variables
-export EDITOR='/usr/bin/nvim'
-export PATH=$HOME/.Android:$HOME/.Android/SDK/platform-tools/:$HOME/.cargo/bin:$HOME/.local/lib/python*/site-packages:$PATH
+export EDITOR=/usr/bin/nvim
+export ANDROID_HOME=$HOME/.Android/Sdk/
+export CHROME_EXECUTABLE=/usr/bin/chromium-browser
+
+# Expanding the path
+# cargo
+export PATH=$HOME/.cargo/bin:$PATH
+# python
+export PATH=$HOME/.local/lib/python*/site-packages:$PATH
+# flutter
+export PATH=$HOME/Git/flutter/bin:$PATH
+# android studio
+export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH
 
 # starship promtp
 eval "$(starship init zsh)"
@@ -52,6 +63,7 @@ alias vim='nvim'
 alias vi='nvim'
 alias v='nvim'
 alias cp='cp -r'
+alias cat='bat'
 
 unzipf() {
     if [ -z "$2" ]; then
@@ -62,4 +74,4 @@ unzipf() {
     command unzip $1 -d $folder
 }
 
-source "$HOME/Code/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$HOME/Git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"

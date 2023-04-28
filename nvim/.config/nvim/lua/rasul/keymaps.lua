@@ -56,7 +56,7 @@ map("n", "<leader><S-c>", ":bd!<CR>", opts)
 map("n", "<leader>w", ":w<CR>", opts)
 
 -- Execute the current buffer if possible
-map("n", "<leader>r", ":!./%<CR>", opts)
+map("n", "<leader>x", ":!./%<CR>", opts)
 
 -- Shell like navigation in command mode
 map("c", "<C-a>", "<Home>", { noremap = true })

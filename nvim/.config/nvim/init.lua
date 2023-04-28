@@ -1,2 +1,2 @@
-require("root")
-vim.cmd [[ colorscheme kanagawa]]
+require("rasul")
+vim.cmd([[colorscheme NeoSolarized]])

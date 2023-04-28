@@ -36,7 +36,8 @@ local options = {
   syntax = 'ON',
   title = true,
   inccommand = 'split',
-  ch = 0,
+  cmdheight = 0,
+  showcmdloc = 'statusline',
 }
 -- Function to set from table above
 for k, v in pairs(options) do
