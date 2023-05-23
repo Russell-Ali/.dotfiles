@@ -67,6 +67,10 @@ local plugins = {
   {
     'nvim-lualine/lualine.nvim',
   },
+  -- Tmux Navigation
+  {
+    'christoomey/vim-tmux-navigator'
+  },
   -- Git Signs
   {
     'lewis6991/gitsigns.nvim',

@@ -1,19 +1,15 @@
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 setopt HIST_IGNORE_ALL_DUPS
 
 zstyle :compinstall filename '$HOME/.zshrc'
-
-# bindkey -v
-export KEYTIMEOUT=1
 
 # Enable Colors
 autoload -U colors && colors
 
 # environment variables
-export EDITOR=/usr/bin/nvim
 export ANDROID_HOME=$HOME/.Android/Sdk/
 export CHROME_EXECUTABLE=/usr/bin/chromium-browser
 
@@ -26,9 +22,6 @@ export PATH=$HOME/.local/lib/python*/site-packages:$PATH
 export PATH=$HOME/Git/flutter/bin:$PATH
 # android studio
 export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH
-
-# starship promtp
-eval "$(starship init zsh)"
 
 # Key bindings
 bindkey ";5C" forward-word
@@ -45,20 +38,14 @@ _comp_options+=(globdots)
 setopt autocd
 
 # custom aliases
-alias sudo='sudo '
-alias \#='sudo'
 alias so='source $HOME/.zshrc'
-alias la="lsd -lhAt --color=always"
-alias ls="lsd --color=always"
-alias ll="lsd -lht --color=always"
+alias la="lsd -lhAtU --color=always"
+alias ls="lsd -U --color=always"
+alias ll="lsd -lhtU --color=always"
 alias untar='tar xvf'
-alias grep='grep --color=always'
-alias rd='rm -r'
-alias rf='rm -rf'
+alias rf='rm -rvf'
 alias mv='mv -i'
 alias suv='sudo nvim'
-alias suvi='sudo nvim'
-alias suvim='sudo nvim'
 alias vim='nvim'
 alias vi='nvim'
 alias v='nvim'
@@ -74,4 +61,5 @@ unzipf() {
     command unzip $1 -d $folder
 }
 
+source "$HOME/Git/minimal/minimal.zsh"
 source "$HOME/Git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"

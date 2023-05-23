@@ -27,6 +27,22 @@ map("n", "<C-j>", "<C-w>j", opts)
 map("n", "<C-k>", "<C-w>k", opts)
 map("n", "<C-l>", "<C-w>l", opts)
 
+-- Better split navigation
+map('n', '<C-A-v>', '<C-w>v', opts)
+map('n', '<C-A-s>', '<C-w>s', opts)
+map('n', '<C-A-c>', '<C-w>c', opts)
+
+map("n", "<C-A-h>", "<C-w>H", opts)
+map("n", "<C-A-j>", "<C-w>J", opts)
+map("n", "<C-A-k>", "<C-w>K", opts)
+map("n", "<C-A-l>", "<C-w>L", opts)
+
+-- Tmux navigation mappings
+map("n", "<C-h>", ":TmuxNavigateLeft <CR>", opts)
+map("n", "<C-j>",  ":TmuxNavigateRight <CR>", opts)
+map("n", "<C-k>",  ":TmuxNavigateDown <CR>", opts)
+map("n", "<C-l>",  ":TmuxNavigateUp <CR>", opts)
+
 -- Resize with arrows
 map("n", "<C-Up>", ":resize -2<CR>", opts)
 map("n", "<C-Down>", ":resize +2<CR>", opts)

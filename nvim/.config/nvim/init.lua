@@ -1,2 +1,2 @@
 require("rasul")
-vim.cmd([[colorscheme NeoSolarized]])
+vim.cmd([[colorscheme PaperColor]])

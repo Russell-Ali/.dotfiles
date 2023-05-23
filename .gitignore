@@ -1,5 +1,5 @@
-current-theme.conf
-kitty.conf.bak
 nvim/.config/nvim/colors
 nvim/.config/nvim/snippets
-nvim/.config/nvim/plugin/packer_compiled.lua
+nvim/.config/nvim/lazy-lock.json
+alacritty/.config/alacritty/colors
+tmux/.config/tmux/plugins
