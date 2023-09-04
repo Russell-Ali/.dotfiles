@@ -24,7 +24,7 @@ local plugins = {
   {
     'norcalli/nvim-colorizer.lua',
     config = function()
-      require 'colorizer'.setup({'*';}, { names = false })
+      require 'colorizer'.setup({ '*', }, { names = false })
     end
   },
   lazy = true,
@@ -56,7 +56,9 @@ local plugins = {
   {
     'numToStr/Comment.nvim',
     config = function()
-      require('Comment').setup()
+      require('Comment').setup {
+        require('Comment.ft').set('tsx', { '{/*%s*/}', '{/*%s*/}' })
+      }
     end
   },
   -- Web Dev Icons
@@ -98,8 +100,8 @@ local plugins = {
   { 'hrsh7th/cmp-path' },
   { 'hrsh7th/cmp-cmdline' },
   { 'hrsh7th/nvim-cmp' },
-  { 'dcampos/nvim-snippy' },
-  { 'dcampos/cmp-snippy' },
+  { 'L3MON4D3/LuaSnip' },
+  { 'saadparwaiz1/cmp_luasnip' },
 }
 
 -- Options

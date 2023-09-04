@@ -10,7 +10,7 @@ zstyle :compinstall filename '$HOME/.zshrc'
 autoload -U colors && colors
 
 # environment variables
-export ANDROID_HOME=$HOME/.Android/Sdk/
+# export ANDROID_HOME=$HOME/.Android/Sdk/
 export CHROME_EXECUTABLE=/usr/bin/chromium-browser
 
 # Expanding the path
@@ -19,9 +19,9 @@ export PATH=$HOME/.cargo/bin:$PATH
 # python
 export PATH=$HOME/.local/lib/python*/site-packages:$PATH
 # flutter
-export PATH=$HOME/Git/flutter/bin:$PATH
+# export PATH=$HOME/Git/flutter/bin:$PATH
 # android studio
-export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH
+# export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH
 
 # Key bindings
 bindkey ";5C" forward-word

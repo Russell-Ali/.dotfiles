@@ -1,6 +1,6 @@
 -- Variables
 local cmp = require 'cmp'
-local snippy = require('snippy')
+local luasnip = require('luasnip')
 local kind_icons = {
   Text = "",
   Method = "",
@@ -39,7 +39,7 @@ cmp.setup({
   },
   snippet = {
     expand = function(args)
-      snippy.expand_snippet(args.body)
+      luasnip.lsp_expand(args.body)
     end,
   },
   window = {
@@ -70,8 +70,9 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'snippy' },
-    { name = 'buffer',
+    { name = 'luasnip' },
+    {
+      name = 'buffer',
       options = {
         get_bufnrs = function()
           return vim.api.nvim_list_bufs()

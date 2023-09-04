@@ -3,6 +3,7 @@ local HOME = os.getenv('HOME')
 
 -- List of options
 local options = {
+  bg = 'dark',
   number = true,
   relativenumber = true,
   mouse = 'nv',
@@ -16,7 +17,7 @@ local options = {
   undodir = HOME .. '/.local/share/nvim/undo',
   undofile = true,
   wrap = false,
-  scrolloff = 8,
+  scrolloff = 16,
   smartindent = true,
   hlsearch = false,
   showmode = false,
