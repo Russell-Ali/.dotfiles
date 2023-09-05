@@ -39,9 +39,9 @@ map("n", "<C-A-l>", "<C-w>L", opts)
 
 -- Tmux navigation mappings
 map("n", "<C-h>", ":TmuxNavigateLeft <CR>", opts)
-map("n", "<C-j>",  ":TmuxNavigateRight <CR>", opts)
-map("n", "<C-k>",  ":TmuxNavigateDown <CR>", opts)
-map("n", "<C-l>",  ":TmuxNavigateUp <CR>", opts)
+map("n", "<C-j>", ":TmuxNavigateRight <CR>", opts)
+map("n", "<C-k>", ":TmuxNavigateDown <CR>", opts)
+map("n", "<C-l>", ":TmuxNavigateUp <CR>", opts)
 
 -- Resize with arrows
 map("n", "<C-Up>", ":resize -2<CR>", opts)
