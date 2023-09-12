@@ -20,6 +20,12 @@ local plugins = {
     tag = '0.1.1',
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
+  -- Catppuccin Theme
+  {
+    'catppuccin/nvim',
+    name = "catppuccin",
+    priority = 1000
+  },
   -- Colorizer [#ff0]
   {
     'norcalli/nvim-colorizer.lua',
@@ -48,9 +54,9 @@ local plugins = {
       }
     end
   },
-  -- DAB
+  -- Dap
   {
-    'mfussenegger/nvim-dap'
+  'mfussenegger/nvim-dap'
   },
   -- Comment
   {

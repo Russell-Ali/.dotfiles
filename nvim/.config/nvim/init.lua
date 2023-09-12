@@ -1,2 +1,2 @@
 require("rasul")
-vim.cmd([[colorscheme PaperColor]])
+vim.cmd([[colorscheme catppuccin]])
