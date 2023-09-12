@@ -56,5 +56,12 @@ unzipf() {
     command unzip $1 -d $folder
 }
 
+# bun completions
+[ -s "/home/rasul/.bun/_bun" ] && source "/home/rasul/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 source "$HOME/Git/minimal/minimal.zsh"
 source "$HOME/Git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
