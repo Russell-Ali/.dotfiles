@@ -19,8 +19,8 @@ export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.local/lib/python*/site-packages:$PATH
 
 # Key bindings
-bindkey ";5C" forward-word
-bindkey ";5D" backward-word
+bindkey "5C" forward-word
+bindkey "5D" backward-word
 
 # Basic auto/tab complete:
 autoload -Uz compinit
