@@ -17,7 +17,7 @@ local plugins = {
   -- Telescope
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.1',
+    tag = '0.1.4',
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
   -- Catppuccin Theme
@@ -31,9 +31,9 @@ local plugins = {
     'norcalli/nvim-colorizer.lua',
     config = function()
       require 'colorizer'.setup({ '*', }, { names = false })
-    end
+    end,
+    lazy = true
   },
-  lazy = true,
   -- LspConfig
   {
     'neovim/nvim-lspconfig',
@@ -56,7 +56,7 @@ local plugins = {
   },
   -- Dap
   {
-  'mfussenegger/nvim-dap'
+    'mfussenegger/nvim-dap'
   },
   -- Comment
   {
@@ -106,7 +106,11 @@ local plugins = {
   { 'hrsh7th/cmp-path' },
   { 'hrsh7th/cmp-cmdline' },
   { 'hrsh7th/nvim-cmp' },
-  { 'L3MON4D3/LuaSnip' },
+  {
+    'L3MON4D3/LuaSnip',
+    version = "v2.*",
+    dependencies = { "rafamadriz/friendly-snippets" },
+  },
   { 'saadparwaiz1/cmp_luasnip' },
 }
 
