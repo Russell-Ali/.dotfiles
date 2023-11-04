@@ -46,6 +46,7 @@ alias vi='nvim'
 alias v='nvim'
 alias cp='cp -r'
 alias cat='bat'
+alias t='tmux'
 
 unzipf() {
     if [ -z "$2" ]; then
