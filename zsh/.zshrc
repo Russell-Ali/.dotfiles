@@ -6,17 +6,14 @@ setopt HIST_IGNORE_ALL_DUPS
 
 zstyle :compinstall filename '$HOME/.zshrc'
 
+# Prompt
+fpath+=$HOME/Git/typewritten
+autoload -U promptinit; promptinit
+prompt typewritten
+TYPEWRITTEN_CURSOR="block"
+
 # Enable Colors
 autoload -U colors && colors
-
-# environment variables
-export CHROME_EXECUTABLE=/usr/bin/chromium-browser
-
-# Expanding the path
-# cargo
-export PATH=$HOME/.cargo/bin:$PATH
-# python
-export PATH=$HOME/.local/lib/python*/site-packages:$PATH
 
 # Key bindings
 bindkey "5C" forward-word
@@ -34,9 +31,9 @@ setopt autocd
 
 # custom aliases
 alias so='source $HOME/.zshrc'
-alias la="lsd -lhAtU --color=always"
-alias ls="lsd -U --color=always"
-alias ll="lsd -lhtU --color=always"
+alias la="ls -lhAtU --color=auto"
+alias ls="ls -t --group-directories-first  --color=auto"
+alias ll="ls -lhtU --color=auto"
 alias untar='tar xvf'
 alias rf='rm -rvf'
 alias mv='mv -i'
@@ -45,7 +42,6 @@ alias vim='nvim'
 alias vi='nvim'
 alias v='nvim'
 alias cp='cp -r'
-alias cat='bat'
 alias t='tmux'
 
 unzipf() {
@@ -63,6 +59,3 @@ unzipf() {
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
-source "$HOME/Git/minimal/minimal.zsh"
-source "$HOME/Git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
