@@ -11,6 +11,7 @@ fpath+=$HOME/Git/typewritten
 autoload -U promptinit; promptinit
 prompt typewritten
 TYPEWRITTEN_CURSOR="block"
+TYPEWRITTEN_RELATIVE_PATH="home"
 
 # Enable Colors
 autoload -U colors && colors
