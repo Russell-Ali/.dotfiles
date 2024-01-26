@@ -3,7 +3,7 @@ local opts = { noremap = true, silent = true }
 local opts_expr = { noremap = true, silent = true, expr = true }
 
 -- Shorten the functions' name
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 
 -- Remap space as leader key
 map("", "<Space>", "<Nop>", opts)
@@ -18,8 +18,8 @@ map("n", "<A-k>", ":m .-2<CR>", opts)
 map("n", "<A-y>", ":t .<CR>", opts)
 
 -- Insert empty line(s)
-map("n", "<leader>o", "'m`' . v:count1 . 'o<Esc>``'", { expr = true, noremap = true, })
-map("n", "<leader>O", "'m`' . v:count1 . 'O<Esc>``'", { expr = true, noremap = true, })
+map("n", "<leader>o", "'m`' . v:count1 . 'o<Esc>``'", opts_expr)
+map("n", "<leader>O", "'m`' . v:count1 . 'O<Esc>``'", opts_expr)
 
 -- Better window navigation
 map("n", "<C-h>", "<C-w>h", opts)
@@ -37,12 +37,6 @@ map("n", "<C-A-j>", "<C-w>J", opts)
 map("n", "<C-A-k>", "<C-w>K", opts)
 map("n", "<C-A-l>", "<C-w>L", opts)
 
--- Tmux navigation mappings
-map("n", "<C-h>", ":TmuxNavigateLeft <CR>", opts)
-map("n", "<C-j>", ":TmuxNavigateRight <CR>", opts)
-map("n", "<C-k>", ":TmuxNavigateDown <CR>", opts)
-map("n", "<C-l>", ":TmuxNavigateUp <CR>", opts)
-
 -- Resize with arrows
 map("n", "<C-Up>", ":resize -2<CR>", opts)
 map("n", "<C-Down>", ":resize +2<CR>", opts)
@@ -50,12 +44,9 @@ map("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 map("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Easily copy, cut, paste from system clipboard
-map("v", "<C-y>", [["+y]], opts)
-map("v", "<C-x>", [["+x]], opts)
+map( {"n", "v"}, "<C-y>", [["+y]], opts)
+map( {"n", "v"}, "<C-x>", [["+x]], opts)
 map("", "<C-p>", [["+p]], opts)
-
--- Toggle Spell check
-map("", "<F7>", ":set spell!<CR>", opts)
 
 -- Toggle Light/Dark mode
 map("", "<F9>", [[':set bg='.(&bg=='dark' ? "light" : "dark")."<CR>"]], opts_expr)
@@ -75,8 +66,8 @@ map("n", "<leader>w", ":w<CR>", opts)
 map("n", "<leader>x", ":!./%<CR>", opts)
 
 -- Shell like navigation in command mode
-map("c", "<C-a>", "<Home>", { noremap = true })
-map("c", "<C-e>", "<End>", { noremap = true })
+map("c", "<C-a>", "<Home>", opts)
+map("c", "<C-e>", "<End>",  opts)
 
 -- Toggle text wrap
 map("n", "<leader>s", ":set wrap!<CR>", opts)

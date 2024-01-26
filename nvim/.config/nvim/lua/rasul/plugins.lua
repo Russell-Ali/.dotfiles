@@ -11,114 +11,68 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
+-- Bootstrap Lazy Nvim
 
--- List of plugins
 local plugins = {
+
+  -- Tmux Navigation
+  "christoomey/vim-tmux-navigator",
+
   -- Telescope
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.4',
+    tag = '0.1.5',
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
-  -- Catppuccin Theme
-  {
-    'catppuccin/nvim',
-    name = "catppuccin",
-    priority = 1000
-  },
-  -- Colorizer [#ff0]
-  {
-    'norcalli/nvim-colorizer.lua',
-    config = function()
-      require 'colorizer'.setup({ '*', }, { names = false })
-    end,
-    lazy = true
-  },
-  -- LspConfig
-  {
-    'neovim/nvim-lspconfig',
-  },
+  -- Comment Nvim
+  'numToStr/Comment.nvim',
+
+  -- Web Dev Icons
+  'nvim-tree/nvim-web-devicons',
+
+  -- Nvim Tree File Explorer
+  'nvim-tree/nvim-tree.lua',
+
+  -- Oil Nvim
+  'stevearc/oil.nvim',
+
+  -- LSP Config
+  'neovim/nvim-lspconfig',
+
   -- Mason
   {
     'williamboman/mason.nvim',
-    config = function()
-      require("mason").setup()
-    end,
-    build = ':MasonUpdate'
+    -- custom deps just for convenience
+    dependencies = { 'williamboman/mason-lspconfig.nvim' }
   },
-  {
-    'williamboman/mason-lspconfig.nvim',
-    config = function()
-      require('mason-lspconfig').setup {
-        automatic_installation = true,
-      }
-    end
-  },
-  -- Dap
-  {
-    'mfussenegger/nvim-dap'
-  },
-  -- Comment
-  {
-    'numToStr/Comment.nvim',
-    config = function()
-      require('Comment').setup {
-        require('Comment.ft').set('tsx', { '{/*%s*/}', '{/*%s*/}' })
-      }
-    end
-  },
-  -- Web Dev Icons
-  {
-    'nvim-tree/nvim-web-devicons'
-  },
-  -- Lualine
-  {
-    'nvim-lualine/lualine.nvim',
-  },
-  -- Tmux Navigation
-  {
-    'christoomey/vim-tmux-navigator'
-  },
-  -- Git Signs
-  {
-    'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup {
-        numhl              = true,
-        current_line_blame = true,
-        watch_gitdir       = {
-          interval = 100,
-        },
-      }
-    end
-  },
-  -- Nvim Tree
-  {
-    'nvim-tree/nvim-tree.lua'
-  },
+
   -- Treesitter
-  {
-    'nvim-treesitter/nvim-treesitter'
-  },
-  -- CMP
-  { 'hrsh7th/cmp-nvim-lsp' },
-  { 'hrsh7th/cmp-buffer' },
-  { 'hrsh7th/cmp-path' },
-  { 'hrsh7th/cmp-cmdline' },
-  { 'hrsh7th/nvim-cmp' },
+  'nvim-treesitter/nvim-treesitter',
+
+  -- Git Signs
+  'lewis6991/gitsigns.nvim',
+
+  -- cmp
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-cmdline',
+  'hrsh7th/nvim-cmp',
+
+  -- snippets for cmp
   {
     'L3MON4D3/LuaSnip',
     version = "v2.*",
     dependencies = { "rafamadriz/friendly-snippets" },
   },
   { 'saadparwaiz1/cmp_luasnip' },
+
 }
 
 -- Options
 local opts = {
   install = {
     missing = true,
-    colorscheme = {},
   },
 }
 

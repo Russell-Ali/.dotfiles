@@ -3,37 +3,45 @@ local cmp = require 'cmp'
 local luasnip = require('luasnip')
 local kind_icons = {
   Text = "",
-  Method = "",
-  Function = "",
+  Method = "󰆧",
+  Function = "󰊕",
   Constructor = "",
-  Field = "",
-  Variable = "",
-  Class = "ﴯ",
+  Field = "󰇽",
+  Variable = "󰂡",
+  Class = "󰠱",
   Interface = "",
   Module = "",
-  Property = "ﰠ",
+  Property = "󰜢",
   Unit = "",
-  Value = "",
+  Value = "󰎠",
   Enum = "",
-  Keyword = "",
+  Keyword = "󰌋",
   Snippet = "",
-  Color = "",
-  File = "",
+  Color = "󰏘",
+  File = "󰈙",
   Reference = "",
-  Folder = "",
+  Folder = "󰉋",
   EnumMember = "",
-  Constant = "",
+  Constant = "󰏿",
   Struct = "",
   Event = "",
-  formattingOperator = "",
-  TypeParameter = ""
+  Operator = "󰆕",
+  TypeParameter = "󰅲",
 }
 
 cmp.setup({
   formatting = {
-    format = function(_, vim_item)
+    format = function(entry, vim_item)
       -- Kind icons
-      vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+      vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+      -- Source
+      vim_item.menu = ({
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        luasnip = "[LuaSnip]",
+        nvim_lua = "[Lua]",
+        latex_symbols = "[LaTeX]",
+      })[entry.source.name]
       return vim_item
     end
   },

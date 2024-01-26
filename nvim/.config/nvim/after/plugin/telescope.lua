@@ -1,11 +1,19 @@
 -- Variables
-local opts = { noremap = true }
 local builtin = require('telescope.builtin')
+local actions = require('telescope.actions')
+local opts = { noremap = true, silent = true }
 local map = vim.keymap.set
-local telescope = require('telescope')
 
 map('n', '<leader>ff', builtin.find_files, opts)
-map('n', '<leader>fb', builtin.buffers, opts)
+map('n', '<leader>fb', function()
+  builtin.buffers({
+    attach_mappings = function(_, map)
+      -- Map 'c' to close the highlighted buffer
+      map('n', 'c', actions.delete_buffer)
+      return true
+    end,
+  })
+end, opts)
 map('n', '<leader>fh', builtin.oldfiles, opts)
 map('n', '<leader>gg', builtin.live_grep, opts)
 map('n', '<leader>gf', builtin.diagnostics, opts)

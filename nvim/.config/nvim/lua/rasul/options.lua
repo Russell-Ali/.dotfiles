@@ -3,56 +3,52 @@ local HOME = os.getenv('HOME')
 
 -- List of options
 local options = {
-  bg = 'dark',
-  number = true,
-  relativenumber = true,
-  mouse = 'nv',
-  guicursor = '',
-  colorcolumn = '100',
+
   tabstop = 2,
+  softtabstop = 2,
   shiftwidth = 2,
   expandtab = true,
-  errorbells = false,
-  swapfile = false,
-  undodir = HOME .. '/.local/share/nvim/undo',
-  undofile = true,
-  wrap = false,
-  scrolloff = 16,
   smartindent = true,
-  hlsearch = false,
-  showmode = false,
+
+  bg = 'dark',
+  colorcolumn = '80',
+  title = true,
+  guicursor = '',
+
+  number = true,
+  relativenumber = true,
+
   signcolumn = 'yes',
   laststatus = 3,
-  ignorecase = true,
-  smartcase = true,
-  filetype = 'on',
-  spelllang = 'en_us',
-  spellsuggest = { 'best', 9 },
-  updatetime = 400,
-  termguicolors = true,
-  completeopt = { 'menu', 'menuone', 'noselect' },
-  cursorline = true,
+  wrap = false,
+  scrolloff = 8,
   splitright = true,
   splitbelow = true,
   syntax = 'ON',
-  title = true,
+
+  swapfile = false,
+  backup = false,
+  undodir = HOME .. '/.local/share/nvim/undo',
+  undofile = true,
+
+  hlsearch = false,
+  showmode = false,
+  ignorecase = true,
+  smartcase = true,
+  filetype = 'on',
+
+  updatetime = 40,
+
+  termguicolors = true,
+
+  completeopt = { 'menu', 'menuone', 'noselect' },
   inccommand = 'split',
-  cmdheight = 0,
-  showcmdloc = 'statusline',
+
+  errorbells = false,
+  cmdheight = 0
 }
+
 -- Function to set from table above
 for k, v in pairs(options) do
   vim.opt[k] = v
-end
-
--- List of options to append to the defaults
-local appends = {
-  complete = 'kspell',
-  fillchars = [[eob: ]],
-  wildignore = '*/node_modules/*',
-  path = '**',
-}
--- Function to append from table above
-for k, v in pairs(appends) do
-  vim.opt[k]:append(v)
 end
