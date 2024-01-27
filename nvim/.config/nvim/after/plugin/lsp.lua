@@ -1,10 +1,19 @@
+-- Ensure to setup Mason before lspconfig
+require("mason").setup()
+
+require("mason-lspconfig").setup {
+  automatic_installation = true,
+}
+
+local lsp = require('lspconfig')
+local map = vim.keymap.set
+
 local signs = { Error = " ", Warn = " ", Hint = "󰌶 ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
-local lsp = require('lspconfig')
-local map = vim.keymap.set
+
 
 -- Mappings.
 

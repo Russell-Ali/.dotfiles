@@ -15,8 +15,11 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 
+  -- Colorscheme plugin
+  'lewis6991/github_dark.nvim',
+
   -- Tmux Navigation
-  "christoomey/vim-tmux-navigator",
+  'christoomey/vim-tmux-navigator',
 
   -- Telescope
   {
@@ -36,15 +39,15 @@ local plugins = {
   -- Oil Nvim
   'stevearc/oil.nvim',
 
-  -- LSP Config
-  'neovim/nvim-lspconfig',
-
   -- Mason
   {
     'williamboman/mason.nvim',
     -- custom deps just for convenience
     dependencies = { 'williamboman/mason-lspconfig.nvim' }
   },
+
+  -- LSP Config
+  'neovim/nvim-lspconfig',
 
   -- Treesitter
   'nvim-treesitter/nvim-treesitter',
@@ -62,8 +65,8 @@ local plugins = {
   -- snippets for cmp
   {
     'L3MON4D3/LuaSnip',
-    version = "v2.*",
-    dependencies = { "rafamadriz/friendly-snippets" },
+    version = 'v2.*',
+    dependencies = { 'rafamadriz/friendly-snippets' },
   },
   { 'saadparwaiz1/cmp_luasnip' },
 

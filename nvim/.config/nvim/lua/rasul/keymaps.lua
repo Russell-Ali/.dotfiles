@@ -44,8 +44,8 @@ map("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 map("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Easily copy, cut, paste from system clipboard
-map( {"n", "v"}, "<C-y>", [["+y]], opts)
-map( {"n", "v"}, "<C-x>", [["+x]], opts)
+map({ "n", "v" }, "<C-y>", [["+y]], opts)
+map({ "n", "v" }, "<C-x>", [["+x]], opts)
 map("", "<C-p>", [["+p]], opts)
 
 -- Toggle Light/Dark mode
@@ -67,7 +67,7 @@ map("n", "<leader>x", ":!./%<CR>", opts)
 
 -- Shell like navigation in command mode
 map("c", "<C-a>", "<Home>", opts)
-map("c", "<C-e>", "<End>",  opts)
+map("c", "<C-e>", "<End>", opts)
 
 -- Toggle text wrap
 map("n", "<leader>s", ":set wrap!<CR>", opts)
