@@ -7,6 +7,9 @@ require("nvim-tree").setup {
       quit_on_open = true,
     },
   },
+  filters = {
+    dotfiles = false,
+  },
 }
 
 vim.api.nvim_set_keymap("n", "<A-n>", ":NvimTreeToggle<cr>", { noremap = true, silent = true })

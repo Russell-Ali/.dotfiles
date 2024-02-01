@@ -3,7 +3,7 @@ require('rasul.keymaps')
 require('rasul.plugins')
 
 -- Set colorscheme
-vim.cmd [[colorscheme github_dark]]
+vim.cmd [[colorscheme github_dark_default]]
 
 -- Variables
 local autocmd = vim.api.nvim_create_autocmd

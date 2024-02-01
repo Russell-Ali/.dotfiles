@@ -16,7 +16,10 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
 
   -- Colorscheme plugin
-  'lewis6991/github_dark.nvim',
+  'projekt0n/github-nvim-theme',
+
+  -- Dressing Nvim
+  'stevearc/dressing.nvim',
 
   -- Tmux Navigation
   'christoomey/vim-tmux-navigator',
