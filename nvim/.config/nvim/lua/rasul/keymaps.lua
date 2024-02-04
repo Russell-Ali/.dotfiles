@@ -56,8 +56,7 @@ map("n", "<leader><Tab>", ":bnext<CR>", opts)
 map("n", "<leader><S-Tab>", ":bprev<CR>", opts)
 
 -- Close buffers easily
-map("n", "<leader>c", ":bd<CR>", opts)
-map("n", "<leader><S-c>", ":bd!<CR>", opts)
+map("n", "<leader>x", ":bd<CR>", opts)
 
 -- Save the current buffer
 map("n", "<leader>w", ":w<CR>", opts)

@@ -14,6 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 -- Bootstrap Lazy Nvim
 
 local plugins = {
+  -- Copilot Nvim
+  'zbirenbaum/copilot.lua',
 
   -- Colorscheme plugin
   'projekt0n/github-nvim-theme',

@@ -8,8 +8,8 @@ map('n', '<leader>ff', builtin.find_files, opts)
 map('n', '<leader>fb', function()
   builtin.buffers({
     attach_mappings = function(_, map)
-      -- Map 'c' to close the highlighted buffer
-      map('n', 'c', actions.delete_buffer)
+      -- Map 'x' to close the highlighted buffer
+      map('n', 'x', actions.delete_buffer)
       return true
     end,
   })
