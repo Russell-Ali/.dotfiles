@@ -17,6 +17,9 @@ local plugins = {
   -- Copilot Nvim
   'zbirenbaum/copilot.lua',
 
+  -- Lua Line
+  'nvim-lualine/lualine.nvim',
+
   -- Colorscheme plugin
   'projekt0n/github-nvim-theme',
 
