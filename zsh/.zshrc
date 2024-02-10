@@ -16,8 +16,8 @@ TYPEWRITTEN_RELATIVE_PATH="home"
 autoload -U colors && colors
 
 # Key bindings
-bindkey "5C" forward-word
-bindkey "5D" backward-word
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
 
 # Basic auto/tab complete:
 autoload -Uz compinit
@@ -43,6 +43,7 @@ alias vi='nvim'
 alias v='nvim'
 alias cp='cp -r'
 alias t='tmux'
+alias orphs='sudo pacman -Rns $(pacman -Qtdq)'
 
 unzipf() {
     if [ -z "$2" ]; then
