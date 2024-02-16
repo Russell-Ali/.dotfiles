@@ -19,6 +19,9 @@ autoload -U colors && colors
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
+# Environment variables
+export EDITOR=nvim
+
 # Basic auto/tab complete:
 autoload -Uz compinit
 compinit
@@ -43,7 +46,14 @@ alias vi='nvim'
 alias v='nvim'
 alias cp='cp -r'
 alias t='tmux'
-alias orphs='sudo pacman -Rns $(pacman -Qtdq)'
+orphs() {
+  local pkgs=$(pacman -Qdtq)
+    if [ -z "$(echo $pkgs)" ]; then
+      echo -e "\e[1;32mThere are no orphan packages on system\e[0m"
+    else
+        sudo pacman -Rns $(echo $pkgs)
+    fi
+}
 
 unzipf() {
     if [ -z "$2" ]; then
