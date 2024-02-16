@@ -20,6 +20,17 @@ local plugins = {
   -- Lua Line
   'nvim-lualine/lualine.nvim',
 
+  -- Noice Nvim
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+    },
+    dependencies = {
+      "MunifTanjim/nui.nvim"
+    }
+  },
+
   -- Colorscheme plugin
   'projekt0n/github-nvim-theme',
 
@@ -59,6 +70,9 @@ local plugins = {
 
   -- Treesitter
   'nvim-treesitter/nvim-treesitter',
+
+  -- Git Fugitive
+  'tpope/vim-fugitive',
 
   -- Git Signs
   'lewis6991/gitsigns.nvim',
