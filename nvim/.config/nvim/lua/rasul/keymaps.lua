@@ -56,13 +56,13 @@ map("n", "<leader><Tab>", ":bnext<CR>", opts)
 map("n", "<leader><S-Tab>", ":bprev<CR>", opts)
 
 -- Close buffers easily
-map("n", "<leader>x", ":bd<CR>", opts)
+map("n", "<leader>c", ":bd<CR>", opts)
 
 -- Save the current buffer
 map("n", "<leader>w", ":w<CR>", opts)
 
 -- Execute the current buffer if possible
-map("n", "<leader>x", ":!./%<CR>", opts)
+map("n", "<leader>!", ":!./%<CR>", opts)
 
 -- Shell like navigation in command mode
 map("c", "<C-a>", "<Home>", opts)

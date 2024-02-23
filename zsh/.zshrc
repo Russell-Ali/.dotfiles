@@ -47,11 +47,11 @@ alias v='nvim'
 alias cp='cp -r'
 alias t='tmux'
 orphs() {
-  local pkgs=$(pacman -Qdtq)
+  local pkgs=$(yay -Qdtq)
     if [ -z "$(echo $pkgs)" ]; then
       echo -e "\e[1;32mThere are no orphan packages on system\e[0m"
     else
-        sudo pacman -Rns $(echo $pkgs)
+        sudo yay -Rns $(echo $pkgs)
     fi
 }
 

@@ -69,7 +69,12 @@ local plugins = {
   'neovim/nvim-lspconfig',
 
   -- Treesitter
-  'nvim-treesitter/nvim-treesitter',
+  {
+    'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      'windwp/nvim-ts-autotag'
+    }
+  },
 
   -- Git Fugitive
   'tpope/vim-fugitive',
