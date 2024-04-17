@@ -25,6 +25,9 @@ local options = {
   splitright = true,
   splitbelow = true,
   syntax = 'ON',
+  foldmethod = 'expr',
+  foldexpr = 'nvim_treesitter#foldexpr()',
+  foldlevel = 99,
 
   swapfile = false,
   backup = false,

@@ -19,6 +19,9 @@ autoload -U colors && colors
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
+# Remove ESC key binding
+bindkey -r '\e'
+
 # Environment variables
 export EDITOR=nvim
 
@@ -46,6 +49,7 @@ alias vi='nvim'
 alias v='nvim'
 alias cp='cp -r'
 alias t='tmux'
+alias top='glances'
 orphs() {
   local pkgs=$(yay -Qdtq)
     if [ -z "$(echo $pkgs)" ]; then

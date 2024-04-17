@@ -56,7 +56,7 @@ map("n", "<leader><Tab>", ":bnext<CR>", opts)
 map("n", "<leader><S-Tab>", ":bprev<CR>", opts)
 
 -- Close buffers easily
-map("n", "<leader>c", ":bd<CR>", opts)
+map("n", "<leader>x", ":bd<CR>", opts)
 
 -- Save the current buffer
 map("n", "<leader>w", ":w<CR>", opts)
@@ -77,3 +77,6 @@ map("t", "<Esc><Esc>", "<C-\\><C-n>", opts)
 -- Stay in indent mode
 map("v", "<", "<gv", opts)
 map("v", ">", ">gv", opts)
+
+-- Unset increment number shortcut
+map("n", "<C-a>", "<Nop>", opts)

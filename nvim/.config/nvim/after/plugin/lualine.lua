@@ -1,4 +1,14 @@
-local variable
+local function folder()
+  local path = vim.fn.expand("%:p")
+  local current_folder = vim.fn.fnamemodify(path, ":h:t")
+  local parent_folder = vim.fn.fnamemodify(path, ":h:h:t")
+  return parent_folder .. "/" .. current_folder
+end
+
+-- display codeium status with codeium icon
+local function codeium()
+  return '󰁨 ' .. vim.fn["codeium#GetStatusString"]()
+end
 require('lualine').setup {
   options = {
     theme = 'auto',
@@ -12,8 +22,8 @@ require('lualine').setup {
   sections = {
     lualine_a = { 'mode' },
     lualine_b = { 'branch', 'diff' },
-    lualine_c = { 'filename', 'diagnostics' },
-    lualine_x = { 'filetype' },
+    lualine_c = { folder, 'filename', 'diagnostics' },
+    lualine_x = { codeium, 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'selectioncount' }
   },

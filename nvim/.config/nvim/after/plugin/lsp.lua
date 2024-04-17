@@ -1,5 +1,16 @@
 -- Ensure to setup Mason before lspconfig
-require("mason").setup()
+require("mason").setup({
+  ensure_isntalled = {
+    "prettierd",
+  },
+  ui = {
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗"
+    }
+  },
+})
 
 require("mason-lspconfig").setup {
   automatic_installation = true,
@@ -29,7 +40,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     map('n', 'gi', vim.lsp.buf.implementation, opts)
     map('n', '<leader>D', vim.lsp.buf.type_definition, opts)
     map('n', 'gr', vim.lsp.buf.references, opts)
-    map('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, opts)
+    --map('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, opts)
     map('n', '<leader>r', vim.lsp.buf.rename, opts)
   end,
 })
@@ -55,22 +66,14 @@ lsp.lua_ls.setup {
 lsp.clangd.setup {}
 -- Python
 lsp.pyright.setup {}
--- JS/TS/Svelte
-lsp.eslint.setup {}
 -- Rust
 lsp.rust_analyzer.setup {}
 -- Tailwind
 lsp.tailwindcss.setup {}
--- Css/SCss/Less
-lsp.cssls.setup {}
 -- Sh
 lsp.bashls.setup {}
--- Dart
-lsp.dartls.setup {}
 -- Json
 lsp.jsonls.setup {}
--- Dart
-lsp.dartls.setup {}
 -- Svelte
 lsp.svelte.setup {}
 -- Typescript

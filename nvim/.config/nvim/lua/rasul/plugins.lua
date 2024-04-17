@@ -14,8 +14,19 @@ vim.opt.rtp:prepend(lazypath)
 -- Bootstrap Lazy Nvim
 
 local plugins = {
-  -- Copilot Nvim
-  'zbirenbaum/copilot.lua',
+  -- Formatter
+  {
+    'stevearc/conform.nvim',
+  },
+  -- Lorem Ipsum
+  {
+    'derektata/lorem.nvim'
+  },
+  -- Codeium
+  {
+    'Exafunction/codeium.vim',
+    event = 'BufEnter'
+  },
 
   -- Lua Line
   'nvim-lualine/lualine.nvim',
@@ -30,6 +41,12 @@ local plugins = {
       "MunifTanjim/nui.nvim"
     }
   },
+  --
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {}
+  },
 
   -- Colorscheme plugin
   'projekt0n/github-nvim-theme',
@@ -40,17 +57,22 @@ local plugins = {
   -- Tmux Navigation
   'christoomey/vim-tmux-navigator',
 
+  -- Plenary
+  'nvim-lua/plenary.nvim',
+
   -- Telescope
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.5',
-    dependencies = { 'nvim-lua/plenary.nvim' }
+    tag = '0.1.6',
   },
   -- Comment Nvim
   'numToStr/Comment.nvim',
 
   -- Web Dev Icons
-  'nvim-tree/nvim-web-devicons',
+  {
+    'nvim-tree/nvim-web-devicons',
+    dependencies = { 'windwp/nvim-ts-autotag' }
+  },
 
   -- Nvim Tree File Explorer
   'nvim-tree/nvim-tree.lua',
@@ -71,9 +93,6 @@ local plugins = {
   -- Treesitter
   {
     'nvim-treesitter/nvim-treesitter',
-    dependencies = {
-      'windwp/nvim-ts-autotag'
-    }
   },
 
   -- Git Fugitive
@@ -88,15 +107,6 @@ local plugins = {
   'hrsh7th/cmp-path',
   'hrsh7th/cmp-cmdline',
   'hrsh7th/nvim-cmp',
-
-  -- snippets for cmp
-  {
-    'L3MON4D3/LuaSnip',
-    version = 'v2.*',
-    dependencies = { 'rafamadriz/friendly-snippets' },
-  },
-  { 'saadparwaiz1/cmp_luasnip' },
-
 }
 
 -- Options

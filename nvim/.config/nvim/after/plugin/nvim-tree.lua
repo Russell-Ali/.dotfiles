@@ -10,6 +10,10 @@ require("nvim-tree").setup {
   filters = {
     dotfiles = false,
   },
+  view = {
+    side = "right",
+    width = 45,
+  },
 }
 
 vim.api.nvim_set_keymap("n", "<A-n>", ":NvimTreeToggle<cr>", { noremap = true, silent = true })

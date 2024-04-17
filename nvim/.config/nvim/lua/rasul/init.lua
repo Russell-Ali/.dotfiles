@@ -32,7 +32,7 @@ autocmd('BufWritePre', {
 })
 
 -- Format on save with LSP on BufWritePre
-autocmd('BufWritePre', {
-  pattern = '*',
-  command = 'lua vim.lsp.buf.format()',
-})
+-- autocmd('BufWritePre', {
+--   pattern = '*',
+--   command = 'lua vim.lsp.buf.format()',
+-- })
