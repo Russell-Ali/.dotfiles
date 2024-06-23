@@ -19,6 +19,9 @@ autoload -U colors && colors
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
+# Path
+export PATH="$HOME/Git/scripts/:$PATH"
+
 # Remove ESC key binding
 bindkey -r '\e'
 

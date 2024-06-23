@@ -22,16 +22,16 @@ local plugins = {
   {
     'derektata/lorem.nvim'
   },
-  -- Codeium
+  -- Codeium +
   {
     'Exafunction/codeium.vim',
     event = 'BufEnter'
   },
 
-  -- Lua Line
+  -- Lua Line +
   'nvim-lualine/lualine.nvim',
 
-  -- Noice Nvim
+  -- Noice Nvim +
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -48,60 +48,60 @@ local plugins = {
     opts = {}
   },
 
-  -- Colorscheme plugin
+  -- Colorscheme plugin +
   'projekt0n/github-nvim-theme',
 
-  -- Dressing Nvim
+  -- Dressing Nvim +
   'stevearc/dressing.nvim',
 
-  -- Tmux Navigation
+  -- Tmux Navigation +
   'christoomey/vim-tmux-navigator',
 
-  -- Plenary
+  -- Plenary +
   'nvim-lua/plenary.nvim',
 
-  -- Telescope
+  -- Telescope +
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.6',
   },
-  -- Comment Nvim
+  -- Comment Nvim +
   'numToStr/Comment.nvim',
 
-  -- Web Dev Icons
+  -- Web Dev Icons +
   {
     'nvim-tree/nvim-web-devicons',
     dependencies = { 'windwp/nvim-ts-autotag' }
   },
 
-  -- Nvim Tree File Explorer
+  -- Nvim Tree File Explorer -
   'nvim-tree/nvim-tree.lua',
 
-  -- Oil Nvim
+  -- Oil Nvim +
   'stevearc/oil.nvim',
 
-  -- Mason
+  -- Mason +
   {
     'williamboman/mason.nvim',
     -- custom deps just for convenience
     dependencies = { 'williamboman/mason-lspconfig.nvim' }
   },
 
-  -- LSP Config
+  -- LSP Config +
   'neovim/nvim-lspconfig',
 
-  -- Treesitter
+  -- Treesitter +
   {
     'nvim-treesitter/nvim-treesitter',
   },
 
-  -- Git Fugitive
+  -- Git Fugitive +
   'tpope/vim-fugitive',
 
-  -- Git Signs
+  -- Git Signs +
   'lewis6991/gitsigns.nvim',
 
-  -- cmp
+  -- cmp +
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
