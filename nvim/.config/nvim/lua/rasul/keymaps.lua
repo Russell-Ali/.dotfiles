@@ -28,9 +28,9 @@ map("n", "<C-k>", "<C-w>k", opts)
 map("n", "<C-l>", "<C-w>l", opts)
 
 -- Better split navigation
-map('n', '<C-A-v>', '<C-w>v', opts)
-map('n', '<C-A-s>', '<C-w>s', opts)
-map('n', '<C-A-c>', '<C-w>c', opts)
+map("n", "<C-A-v>", "<C-w>v", opts)
+map("n", "<C-A-s>", "<C-w>s", opts)
+map("n", "<C-A-c>", "<C-w>c", opts)
 
 map("n", "<C-A-h>", "<C-w>H", opts)
 map("n", "<C-A-j>", "<C-w>J", opts)
