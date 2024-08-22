@@ -12,8 +12,8 @@ return {
 		map("n", "<leader>ff", builtin.find_files, opts)
 		map("n", "<leader>fb", function()
 			builtin.buffers({
-				attach_mappings = function(_, map)
-					map("n", "c", actions.delete_buffer)
+				attach_mappings = function(_, localMap)
+					localMap("n", "x", actions.delete_buffer)
 					return true
 				end,
 			})

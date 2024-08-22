@@ -68,8 +68,14 @@ return {
 			}),
 
 			formatting = {
-				format = function(_, vim_item)
+				format = function(entry, vim_item)
 					vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
+					vim_item.menu = ({
+						buffer = "[BFR]",
+						nvim_lsp = "[LSP]",
+						luasnip = "[SNP]",
+						nvim_lua = "[Lua]",
+					})[entry.source.name]
 					return vim_item
 				end,
 			},
